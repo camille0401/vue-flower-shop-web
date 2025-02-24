@@ -1,5 +1,4 @@
-<template>
-    <div class="test">我是首页</div>
+<template>>
 </template>
 <script setup name="Home">
 
