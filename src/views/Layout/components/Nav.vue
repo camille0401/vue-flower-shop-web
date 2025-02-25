@@ -12,7 +12,7 @@
             </el-popconfirm>
           </li>
           <li><a href="javascript:;">我的订单</a></li>
-          <li><a href="javascript:;">购物车</a></li>
+          <li><a href="javascript:;">会员中心</a></li>
         </template>
         <template v-else>
           <li><a href="javascript:;">请先登录</a></li>
@@ -30,7 +30,7 @@
 
 <style scoped lang="scss">
 .app-topnav {
-  background: $bodyColor;
+  background: $HtmlElementColor;
   ul {
     display: flex;
     height: 53px;

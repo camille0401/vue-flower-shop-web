@@ -1,4 +1,5 @@
-<template>>
+<template>
+    <div style="height: 1500px;"></div>
 </template>
 <script setup name="Home">
 
