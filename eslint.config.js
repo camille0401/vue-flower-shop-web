@@ -5,6 +5,11 @@ export default [
   {
     name: 'app/files-to-lint',
     files: ['**/*.{js,mjs,jsx,vue}'],
+    rules: {
+      'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
+      'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
+      "quotes": ["error", "single"],
+    }
   },
 
   {
@@ -13,9 +18,11 @@ export default [
   },
    
   {
-    "vue/multi-word-component-names": ["error", {
-      "ignores": []
-    }]
+    vue: {
+      "vue/multi-word-component-names": ["error", {
+        "ignores": []
+      }],
+    }
   },
 
   js.configs.recommended,

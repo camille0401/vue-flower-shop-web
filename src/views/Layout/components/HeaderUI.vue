@@ -1,22 +1,15 @@
 <template>
     <ul class="app-header-nav">
-        <li class="home">
-            <RouterLink to="/">首页</RouterLink>
-        </li>
-        <li>
-            <RouterLink to="/">居家</RouterLink>
-        </li>
-        <li>
-            <RouterLink to="/">美食</RouterLink>
-        </li>
-        <li>
-            <RouterLink to="/">服饰</RouterLink>
+        <li class="home" v-for="category in categoryStore.categoryList" :key="category.id">
+            <RouterLink to="/">{{ category.name }}</RouterLink>
         </li>
     </ul>
 </template>
 
 <script setup name="HeaderUI">
+import { useCategoryStore } from '@/stores/category';
 
+const categoryStore = useCategoryStore();
 </script>
 
 <style lang="scss" scoped>
