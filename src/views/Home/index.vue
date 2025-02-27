@@ -9,8 +9,8 @@
 </template>
 
 <script setup name='Home'>
-import HomeBanner from './components/Banner.vue'
-import HomeCategory from './components/Category.vue'
+import HomeBanner from './components/HomeBanner.vue'
+import HomeCategory from './components/HomeCategory.vue'
 
 </script>
 

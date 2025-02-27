@@ -3,7 +3,7 @@
     <div class="container">
       <RouterLink class="logo" to="/" />
       <!-- 导航区域 -->
-      <HeaderUI />
+      <LayoutHeaderUI />
       <div class="right">
         <RouterLink to="/">品牌</RouterLink>
         <RouterLink to="/">专题</RouterLink>
@@ -13,7 +13,7 @@
 </template>
 
 <script setup name="LayoutHeaderFixed">
-import HeaderUI from './HeaderUI.vue';
+import LayoutHeaderUI from './LayoutHeaderUI.vue';
 import { useScroll } from '@vueuse/core';
 
 const { y } = useScroll(window);

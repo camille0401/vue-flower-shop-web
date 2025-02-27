@@ -4,7 +4,7 @@
             <h1 class="logo">
                 <RouterLink to="/">小兔鲜</RouterLink>
             </h1>
-            <HeaderUI/>
+            <LayoutHeaderUI />
             <div class="app-header-member">
                 <div class="search">
                     <i class="iconfont icon-search"></i>
@@ -20,7 +20,7 @@
 </template>
 
 <script setup name="LayoutHeader">
-import HeaderUI from './HeaderUI.vue';
+import LayoutHeaderUI from './LayoutHeaderUI.vue';
 </script>
 
 <style scoped lang='scss'>
@@ -57,6 +57,7 @@ import HeaderUI from './HeaderUI.vue';
         height: 48px;
         border-bottom: 1px solid #e7e7e7;
         line-height: 48px;
+
         .icon-search {
             font-size: 18px;
             margin-left: 5px;
@@ -77,7 +78,8 @@ import HeaderUI from './HeaderUI.vue';
             padding: 0 10px;
             border: 0;
         }
-        .el-button{
+
+        .el-button {
             height: 100%;
         }
 
