@@ -7,9 +7,9 @@
 </template>
 
 <script setup name="LayoutHeaderUI">
-import { useCategoryStore } from '@/stores/category';
+import { useCategoryStore } from '@/stores/category'
 
-const categoryStore = useCategoryStore();
+const categoryStore = useCategoryStore()
 </script>
 
 <style lang="scss" scoped>
