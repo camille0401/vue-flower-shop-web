@@ -1,5 +1,5 @@
 <template>
-  <div class="app-header-sticky" :class="{ show: y > 78 }">
+  <div class="app-header-sticky" :class="{ show: y > 98 }">
     <div class="container">
       <RouterLink class="logo" to="/" />
       <!-- 导航区域 -->
@@ -23,7 +23,7 @@ console.log(y)
 <style scoped lang='scss'>
 .app-header-sticky {
   width: 100%;
-  height: 80px;
+  height: 100px;
   position: fixed;
   left: 0;
   top: 0;
@@ -50,7 +50,7 @@ console.log(y)
 
   .logo {
     width: 200px;
-    height: 80px;
+    height: 100px;
     background: url("@/assets/images/logo.png") no-repeat center;
     background-size: 160px auto;
   }

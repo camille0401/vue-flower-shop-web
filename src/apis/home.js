@@ -2,12 +2,16 @@ import request from "@/utils/request";
 
 /**
  * @description: home-banner
- * @param {*}
+ * @cc {*}
  * @return {*}
  */
-export function getBannerAPI() {
+export function getBannerAPI(param = {}) {
+     // 默认为1 商品为2
+    const { distributionSite = '1' } = param;
     return request({
-        url: "/home/banner"
+        url: `/home/banner`,
+        method: "GET",
+        params: { distributionSite }
     })
 }
 

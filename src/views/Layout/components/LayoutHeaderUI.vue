@@ -25,7 +25,7 @@ const categoryStore = useCategoryStore()
     flex-shrink: 0;
 
     li {
-        margin-right: 40px;
+        margin-right: 20px;
         width: 38px;
         text-align: center;
 

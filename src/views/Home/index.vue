@@ -2,7 +2,7 @@
     <div class="home-page">
         <div class='container'>
             <HomeCategory />
-            <HomeBanner />
+            <HomeBanner distributionSite="1" />
         </div>
         <HomeNew />
         <HomeHot />
@@ -11,7 +11,7 @@
 </template>
 
 <script setup name='Home'>
-import HomeBanner from './components/HomeBanner.vue';
+import HomeBanner from '@/components/Banner.vue'
 import HomeCategory from './components/HomeCategory.vue';
 import HomeNew from './components/HomeNew.vue';
 import HomeHot from './components/HomeHot.vue';

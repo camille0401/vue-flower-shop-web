@@ -38,7 +38,7 @@ import LayoutHeaderUI from './LayoutHeaderUI.vue';
 
         a {
             display: block;
-            height: 80px;
+            height: 100px;
             width: 100%;
             text-indent: -9999px;
             background: url('@/assets/images/logo.png') no-repeat center 18px / contain;

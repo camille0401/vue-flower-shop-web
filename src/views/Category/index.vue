@@ -5,13 +5,50 @@
             <div class="bread-container">
                 <el-breadcrumb separator=">">
                     <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
-                    <el-breadcrumb-item>居家</el-breadcrumb-item>
+                    <el-breadcrumb-item>{{ categoryData.name }}</el-breadcrumb-item>
                 </el-breadcrumb>
+            </div>
+            <!-- 轮播图 -->
+            <CategoryBanner distributionSite="2" />
+            <div class="sub-list">
+                <h3>全部分类</h3>
+                <ul>
+                    <li v-for="category in categoryData.children" :key="category.id">
+                        <RouterLink :to="`/category/sub/${category.id}`">
+                            <img v-img-lazy="category.picture" />
+                            <p>{{ category.name }}</p>
+                        </RouterLink>
+                    </li>
+                </ul>
+            </div>
+            <div class="ref-goods" v-for="item in categoryData.children" :key="item.id">
+                <div class="head">
+                    <h3>- {{ item.name }}-</h3>
+                </div>
+                <div class="body">
+                    <GoodsItem v-for="good in item.goods" :good="good" :key="good.id" />
+                </div>
             </div>
         </div>
     </div>
 </template>
 <script setup name="Category">
+import CategoryBanner from '@/components/Banner.vue'
+import GoodsItem from '@/components/GoodsItem.vue'
+import { onMounted, ref } from 'vue'
+import { onBeforeRouteUpdate, useRoute } from 'vue-router'
+import { getCategoryAPI } from '@/apis/category'
+
+const route = useRoute();
+const categoryData = ref({})
+const getCategoryData = async (id = route.params.id) => {
+    const res = await getCategoryAPI(id)
+    categoryData.value = res?.result || {}
+}
+onMounted(() => getCategoryData())
+onBeforeRouteUpdate((to) => {
+    getCategoryData(to.params.id)
+})
 
 </script>
 <style scoped lang="scss">
@@ -22,6 +59,18 @@
         font-weight: normal;
         text-align: center;
         line-height: 10rem;
+    }
+
+    .home-banner {
+        width: 1240px;
+        height: 500px;
+        margin: 0 auto;
+        position: relative;
+
+        img {
+            width: 100%;
+            height: 500px;
+        }
     }
 
     .sub-list {
