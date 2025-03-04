@@ -1,37 +1,37 @@
-import { createRouter, createWebHistory } from 'vue-router'
-import Login from '@/views/Login/index.vue'
-import Layout from '@/views/Layout/index.vue'
-import Home from '@/views/Home/index.vue'
-import Category from '@/views/Category/index.vue'
-import SubCategory from '@/views/SubCategory/index.vue'
+import { createRouter, createWebHistory } from "vue-router";
+import Login from "@/views/Login/index.vue";
+import Layout from "@/views/Layout/index.vue";
+import Home from "@/views/Home/index.vue";
+import Category from "@/views/Category/index.vue";
+import SubCategory from "@/views/SubCategory/index.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
-      path: '/',
+      path: "/",
       component: Layout,
       children: [
         {
-          path: '',
-          name: 'home',
+          path: "",
+          name: "home",
           component: Home,
         },
         {
-          path: 'category/:id',
-          name: 'category',
+          path: "category/:id",
+          name: "category",
           component: Category,
         },
         {
-          path: 'category/sub/:id',
-          name: 'SubCategory',
+          path: "category/sub/:id",
+          name: "SubCategory",
           component: SubCategory,
-        }
-      ]
+        },
+      ],
     },
     {
-      path: '/login',
-      name: 'login',
+      path: "/login",
+      name: "login",
       component: Login,
     },
     // {
@@ -43,6 +43,12 @@ const router = createRouter({
     //   component: () => import('../views/AboutView.vue'),
     // },
   ],
-})
+  // 路由滚动行为定制
+  scrollBehavior() {
+    return {
+      top: 0,
+    };
+  },
+});
 
-export default router
+export default router;
