@@ -23,7 +23,7 @@
 
 <script setup name="HomeProduct">
 import HomePanel from './HomePanel.vue'
-import GoodsItem from '@/components/GoodsItem.vue'
+import GoodsItem from '@/components/FSGoodsItem.vue'
 import { getGoodsAPI } from '@/apis/home'
 import { ref, onMounted } from 'vue'
 

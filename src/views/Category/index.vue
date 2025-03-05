@@ -26,15 +26,15 @@
                     <h3>- {{ item.name }}-</h3>
                 </div>
                 <div class="body">
-                    <GoodsItem v-for="goods in item.goods" :goods="goods" :key="goods.id" />
+                    <FSGoodsItem v-for="goods in item.goods" :goods="goods" :key="goods.id" />
                 </div>
             </div>
         </div>
     </div>
 </template>
 <script setup name="Category">
-import CategoryBanner from '@/components/Banner.vue'
-import GoodsItem from '@/components/GoodsItem.vue'
+import CategoryBanner from '@/components/FSBanner.vue'
+import FSGoodsItem from '@/components/FSGoodsItem.vue'
 import { onMounted, ref } from 'vue'
 import { onBeforeRouteUpdate, useRoute } from 'vue-router'
 import { getCategoryAPI } from '@/apis/category'

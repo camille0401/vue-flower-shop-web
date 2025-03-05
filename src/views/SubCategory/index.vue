@@ -1,35 +1,36 @@
 <template>
-    <div class="container ">
-        <!-- 面包屑 -->
-        <div class="bread-container">
-            <el-breadcrumb separator=">">
-                <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
-                <el-breadcrumb-item :to="{ path: `/category/${categoryFilterData.parentId}` }">
-                    {{ categoryFilterData.parentName }}
-                </el-breadcrumb-item>
-                <el-breadcrumb-item>{{ categoryFilterData.name }}</el-breadcrumb-item>
-            </el-breadcrumb>
-        </div>
-        <div class="sub-container">
-            <el-tabs v-model="reqData.sortField" @tab-change="tabChange">
-                <el-tab-pane label="最新商品" name="publishTime"></el-tab-pane>
-                <el-tab-pane label="最高人气" name="orderNum"></el-tab-pane>
-                <el-tab-pane label="评论最多" name="evaluateNum"></el-tab-pane>
-            </el-tabs>
-            <div class="body" v-infinite-scroll="load" :infinite-scroll-disabled="disabled">
-                <!-- 商品列表-->
-                <GoodsItem v-for="goods in goodsList" :key="goods.id" :goods="goods" />
+    <div class="sub-category-page">
+        <div class="container ">
+            <!-- 面包屑 -->
+            <div class="bread-container">
+                <el-breadcrumb separator=">">
+                    <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
+                    <el-breadcrumb-item :to="{ path: `/category/${categoryFilterData.parentId}` }">
+                        {{ categoryFilterData.parentName }}
+                    </el-breadcrumb-item>
+                    <el-breadcrumb-item>{{ categoryFilterData.name }}</el-breadcrumb-item>
+                </el-breadcrumb>
+            </div>
+            <div class="sub-container">
+                <el-tabs v-model="reqData.sortField" @tab-change="tabChange">
+                    <el-tab-pane label="最新商品" name="publishTime"></el-tab-pane>
+                    <el-tab-pane label="最高人气" name="orderNum"></el-tab-pane>
+                    <el-tab-pane label="评论最多" name="evaluateNum"></el-tab-pane>
+                </el-tabs>
+                <div class="body" v-infinite-scroll="load" :infinite-scroll-disabled="disabled">
+                    <!-- 商品列表-->
+                    <FSGoodsItem v-for="goods in goodsList" :key="goods.id" :goods="goods" />
+                </div>
             </div>
         </div>
     </div>
-
 </template>
 
 <script setup>
 import { getCategoryFilterAPI, getSubCategoryAPI } from "@/apis/category"
 import { onMounted, ref } from "vue"
 import { useRoute } from "vue-router"
-import GoodsItem from "@/components/GoodsItem.vue"
+import FSGoodsItem from "@/components/FSGoodsItem.vue"
 
 const route = useRoute();
 
