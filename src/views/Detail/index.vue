@@ -17,7 +17,7 @@
                     <div class="goods-info">
                         <div class="media">
                             <!-- 图片预览区 -->
-                            <FSImageView />
+                            <FSImageView :image-list="detailData.mainPictures || []" />
                             <!-- 统计数量 -->
                             <ul class="goods-sales">
                                 <li>
@@ -37,7 +37,7 @@
                                 </li>
                                 <li>
                                     <p>品牌信息</p>
-                                    <p>{{ detailData.brand.name }}</p>
+                                    <p>{{ detailData.brand?.name }}</p>
                                     <p><i class="iconfont icon-dynamic-filling"></i>品牌主页</p>
                                 </li>
                             </ul>
@@ -66,7 +66,7 @@
                                 </dl>
                             </div>
                             <!-- sku组件 -->
-
+                            <FSGoodsSku :goods="detailData" @change="handleSkuChange" />
                             <!-- 数据组件 -->
 
                             <!-- 按钮组件 -->
@@ -94,7 +94,7 @@
                                         </li>
                                     </ul>
                                     <!-- 图片 -->
-                                    <img v-for="img in detailData.details.pictures" :src="img" :key="img" alt="">
+                                    <img v-for="img in detailData.details?.pictures" :src="img" :key="img" alt="">
                                 </div>
                             </div>
                         </div>
@@ -115,6 +115,7 @@
 <script setup name="Detail">
 import DetailHot from './components/DetailHot.vue';
 import FSImageView from '@/components/FSImageView.vue';
+import FSGoodsSku from '@/components/FSSku/index.vue';
 import { getDetailAPI } from '@/apis/detail';
 import { onMounted, ref } from 'vue';
 import { useRoute } from 'vue-router';
@@ -128,6 +129,10 @@ const getDetailData = async () => {
 }
 onMounted(() => getDetailData());
 
+// sku-change
+const handleSkuChange = (sku) => {
+    console.log(sku)
+}
 
 </script>
 

@@ -19,19 +19,20 @@
                 </nav>
                 <div class="account-box">
                     <div class="form">
-                        <el-form label-position="right" label-width="60px" status-icon>
-                            <el-form-item label="账户">
-                                <el-input />
+                        <el-form ref="loginFormRef" :model="loginForm" :rules="loginRules" label-position="right"
+                            label-width="60px" status-icon>
+                            <el-form-item prop="account" label="账户">
+                                <el-input v-model="loginForm.account" />
                             </el-form-item>
-                            <el-form-item label="密码">
-                                <el-input />
+                            <el-form-item prop="password" label="密码">
+                                <el-input v-model="loginForm.password" />
                             </el-form-item>
-                            <el-form-item label-width="22px">
-                                <el-checkbox size="large">
+                            <el-form-item prop="agree" label-width="22px">
+                                <el-checkbox v-model="loginForm.agree" size="large">
                                     我已同意隐私条款和服务条款
                                 </el-checkbox>
                             </el-form-item>
-                            <el-button size="large" class="subBtn">点击登录</el-button>
+                            <el-button size="large" class="subBtn" @click="doLogin">点击登录</el-button>
                         </el-form>
                     </div>
                 </div>
@@ -55,6 +56,62 @@
     </div>
 </template>
 <script setup name="Login">
+import { reactive, ref } from 'vue'
+import 'element-plus/theme-chalk/el-message.css'
+import { ElMessage } from 'element-plus'
+import { useRouter } from 'vue-router'
+import { useUserStore } from '@/stores/user'
+import { getLoginAPI } from '@/apis/user'
+
+const userStore = useUserStore();
+const router = useRouter();
+const loginFormRef = ref(null);
+const loginForm = ref({
+    account: "",
+    password: "",
+    agree: ""
+})
+const loginRules = reactive({
+    account: [
+        { required: true, message: '用户名不能为空', trigger: 'blur' }
+    ],
+    password: [
+        { required: true, message: '密码不能为空', trigger: 'blur' },
+        { min: 6, max: 14, message: '密码长度为6-14个字符', trigger: 'blur' },
+    ],
+    agree: [
+        {
+            validator: (rule, value, callback) => {
+                // 自定义校验逻辑
+                // 勾选就通过 不勾选就不通过
+                if (value) {
+                    callback()
+                } else {
+                    callback(new Error('请勾选协议'))
+                }
+            }
+        }
+    ]
+})
+
+const doLogin = () => {
+    const { account, password } = loginForm.value
+    // 调用实例方法
+    loginFormRef.value.validate(async (valid) => {
+        // valid: 所有表单都通过校验  才为true
+        console.log(valid)
+        // 以valid做为判断条件 如果通过校验才执行登录逻辑
+        if (valid) {
+            // TODO LOGIN
+            const res = await getLoginAPI({ account, password })
+            userStore.getUserInfo(res.result || {});
+            // 1. 提示用户
+            ElMessage({ type: 'success', message: '登录成功' })
+            // 2. 跳转首页
+            router.replace({ path: '/' })
+        }
+    })
+}
 
 </script>
 <style scoped lang='scss'>
@@ -82,7 +139,7 @@
 
     .sub {
         flex: 1;
-        font-size: 24px;
+        font-size: 2rem;
         font-weight: normal;
         margin-bottom: 38px;
         margin-left: 20px;
@@ -92,10 +149,10 @@
     .entry {
         width: 120px;
         margin-bottom: 38px;
-        font-size: 16px;
+        font-size: 1.6rem;
 
         i {
-            font-size: 14px;
+            font-size: 1.4rem;
             color: $xtxColor;
             letter-spacing: -5px;
         }
@@ -117,7 +174,7 @@
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
 
         nav {
-            font-size: 14px;
+            font-size: 1.4rem;
             height: 55px;
             margin-bottom: 20px;
             border-bottom: 1px solid #f5f5f5;
@@ -130,7 +187,7 @@
                 flex: 1;
                 line-height: 1;
                 display: inline-block;
-                font-size: 18px;
+                font-size: 1.8rem;
                 position: relative;
                 text-align: center;
             }
@@ -193,8 +250,8 @@
                     left: 1px;
                     top: 1px;
                     text-align: center;
-                    line-height: 34px;
-                    font-size: 18px;
+                    line-height: 3.4rem;
+                    font-size: 1.8rem;
                 }
 
                 input {
@@ -220,7 +277,7 @@
                     top: 1px;
                     text-align: center;
                     line-height: 34px;
-                    font-size: 14px;
+                    font-size: 1.4rem;
                     background: #f5f5f5;
                     color: #666;
                     width: 90px;
@@ -231,12 +288,12 @@
 
             >.error {
                 position: absolute;
-                font-size: 12px;
-                line-height: 28px;
+                font-size: 1.2rem;
+                line-height: 2.8rem;
                 color: $priceColor;
 
                 i {
-                    font-size: 14px;
+                    font-size: 1.4rem;
                     margin-right: 2px;
                 }
             }
@@ -254,7 +311,7 @@
             height: 40px;
             color: #fff;
             text-align: center;
-            line-height: 40px;
+            line-height: 4rem;
             background: $xtxColor;
 
             &.disabled {
