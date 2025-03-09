@@ -28,11 +28,9 @@ request.interceptors.request.use(
 // axios响应式拦截器
 request.interceptors.response.use(
   (res) => {
-    console.log(res);
     return Promise.resolve(res.data);
   },
   (error) => {
-    console.log(error);
     // 401 token timeout
     const userStore = useUserStore();
     const router = useRouter();

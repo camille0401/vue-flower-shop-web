@@ -12,7 +12,7 @@
                     <el-button type="danger" plain>検索</el-button>
                 </div>
                 <!-- 头部购物车 -->
-
+                <HeaderCart />
             </div>
 
         </div>
@@ -20,7 +20,8 @@
 </template>
 
 <script setup name="LayoutHeader">
-import LayoutHeaderUI from './LayoutHeaderUI.vue';
+import LayoutHeaderUI from "./LayoutHeaderUI.vue";
+import HeaderCart from "./HeaderCart.vue";
 </script>
 
 <style scoped lang='scss'>
@@ -46,6 +47,8 @@ import LayoutHeaderUI from './LayoutHeaderUI.vue';
     }
 
     .app-header-member {
+        display: flex;
+        align-items: center;
         margin-left: auto;
     }
 

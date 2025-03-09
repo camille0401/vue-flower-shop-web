@@ -68,10 +68,10 @@
                             <!-- sku组件 -->
                             <FSGoodsSku :goods="detailData" @change="handleSkuChange" />
                             <!-- 数据组件 -->
-
+                            <el-input-number v-model="count" />
                             <!-- 按钮组件 -->
                             <div>
-                                <el-button size="large" class="btn">
+                                <el-button size="large" class="btn" @click="handleAddCart">
                                     加入购物车
                                 </el-button>
                             </div>
@@ -116,11 +116,17 @@
 import DetailHot from './components/DetailHot.vue';
 import FSImageView from '@/components/FSImageView.vue';
 import FSGoodsSku from '@/components/FSSku/index.vue';
+import 'element-plus/theme-chalk/el-message.css'
+import { ElMessage } from 'element-plus'
 import { getDetailAPI } from '@/apis/detail';
 import { onMounted, ref } from 'vue';
 import { useRoute } from 'vue-router';
+import { useCartStore } from '@/stores/cart';
 
 const route = useRoute();
+const cartStore = useCartStore();
+const count = ref(1); //input-count
+
 // 获取detail-page数据
 const detailData = ref({});
 const getDetailData = async () => {
@@ -130,8 +136,27 @@ const getDetailData = async () => {
 onMounted(() => getDetailData());
 
 // sku-change
+let skuObj = {}
 const handleSkuChange = (sku) => {
-    console.log(sku)
+    skuObj = sku
+}
+
+const handleAddCart = () => {
+    if (skuObj.skuId) {
+        cartStore.addCart({
+            id: detailData.value.id,
+            name: detailData.value.name,
+            picture: detailData.value.mainPictures[0],
+            price: detailData.value.price,
+            count: count.value,
+            skuId: skuObj.skuId,
+            attrsText: skuObj.specsText,
+            selected: true
+        })
+    } else {
+        // 规格没有选择 提示用户
+        ElMessage.warning('请先选择规格')
+    }
 }
 
 </script>
