@@ -38,7 +38,6 @@ onMounted(() => getGoods())
 
 <style scoped lang='scss'>
 .home-product {
-    background: #fff;
     margin-top: 20px;
 
     .sub {

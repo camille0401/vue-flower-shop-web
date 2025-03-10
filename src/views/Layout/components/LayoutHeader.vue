@@ -2,7 +2,7 @@
     <header class='app-header'>
         <div class="container">
             <h1 class="logo">
-                <RouterLink to="/">小兔鲜</RouterLink>
+                <RouterLink to="/">FLOWER SHOP</RouterLink>
             </h1>
             <LayoutHeaderUI />
             <div class="app-header-member">
@@ -26,7 +26,7 @@ import HeaderCart from "./HeaderCart.vue";
 
 <style scoped lang='scss'>
 .app-header {
-    background: #FFFFFF;
+    // background: #FFFFFF;
 
     .container {
         display: flex;
