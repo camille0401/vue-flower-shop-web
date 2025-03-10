@@ -40,7 +40,7 @@ const confirmLogout = () => {
 
 <style scoped lang="scss">
 .app-topnav {
-  background: $HtmlElementColor;
+  background: #333333;
 
   ul {
     display: flex;
@@ -51,7 +51,7 @@ const confirmLogout = () => {
     li {
       a {
         padding: 0 15px;
-        color: #71797F;
+        color: #cdcdcd;
         line-height: 1;
         display: inline-block;
 
@@ -61,7 +61,7 @@ const confirmLogout = () => {
         }
 
         &:hover {
-          color: $xtxColor;
+          color: $fs-base-color;
         }
       }
 

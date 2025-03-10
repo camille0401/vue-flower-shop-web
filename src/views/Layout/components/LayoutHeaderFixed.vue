@@ -22,20 +22,18 @@ console.log(y)
 </script>
 <style scoped lang='scss'>
 .app-header-sticky {
-  width: 100%;
-  height: 100px;
   position: fixed;
   left: 0;
   top: 0;
   z-index: 999;
-  // background-color: #fff;
-  background: $HtmlElementColor;
+  width: 100%;
+  height: 100px;
+  background-color: #ffffff;
   border-bottom: 1px solid #e4e4e4;
   // 此处为关键样式!!!
   // 状态一：往上平移自身高度 + 完全透明
   transform: translateY(-100%);
   opacity: 0;
-
   // 状态二：移除平移 + 完全不透明
   &.show {
     transition: all 0.3s linear;
@@ -60,7 +58,7 @@ console.log(y)
     display: flex;
     text-align: center;
     padding-left: 40px;
-    border-left: 2px solid $xtxColor;
+    border-left: 2px solid $fs-base-color;
 
     a {
       width: 38px;
@@ -69,7 +67,7 @@ console.log(y)
       line-height: 1;
 
       &:hover {
-        color: $xtxColor;
+        color: $fs-base-color;
       }
     }
   }

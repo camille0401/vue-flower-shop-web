@@ -9,7 +9,7 @@
                 <div class="search">
                     <i class="iconfont icon-search"></i>
                     <input type="text" placeholder="キーワードで検索する">
-                    <el-button type="danger" plain>検索</el-button>
+                    <el-button type="primary">検索</el-button>
                 </div>
                 <!-- 头部购物车 -->
                 <HeaderCart />
@@ -26,12 +26,12 @@ import HeaderCart from "./HeaderCart.vue";
 
 <style scoped lang='scss'>
 .app-header {
-    background: $bodyBgColor;
+    background: #FFFFFF;
 
     .container {
         display: flex;
         align-items: center;
-        column-gap: 40px;
+        column-gap: 20px;
     }
 
     .logo {
@@ -42,7 +42,7 @@ import HeaderCart from "./HeaderCart.vue";
             height: 100px;
             width: 100%;
             text-indent: -9999px;
-            background: url('@/assets/images/logo.png') no-repeat center 18px / contain;
+            background: url('@/assets/images/logo.png') no-repeat center / contain;
         }
     }
 
@@ -62,7 +62,7 @@ import HeaderCart from "./HeaderCart.vue";
         line-height: 48px;
 
         .icon-search {
-            font-size: 18px;
+            font-size: 1.8rem;
             margin-left: 5px;
         }
 
@@ -73,7 +73,8 @@ import HeaderCart from "./HeaderCart.vue";
             // background: transparent;
             // color: #666;
             // font-size: 1.8rem;
-
+            height: 100%;
+            background: transparent;
             flex-grow: 1;
             font-size: 1.6rem;
             font-weight: 500;
@@ -99,19 +100,19 @@ import HeaderCart from "./HeaderCart.vue";
             display: block;
 
             .icon-cart {
-                font-size: 22px;
+                font-size: 2.2rem;
             }
 
             em {
-                font-style: normal;
-                position: absolute;
-                right: 0;
-                top: 0;
-                padding: 1px 6px;
-                line-height: 1;
-                background: $helpColor;
+              position: absolute;
+              right: 0;
+              top: 0;
+              padding: 1px 6px;
+              background: $helpColor;
+              line-height: 1;
+              font-style: normal;
                 color: #fff;
-                font-size: 12px;
+                font-size: 1.2rem;
                 border-radius: 10px;
                 font-family: Arial;
             }

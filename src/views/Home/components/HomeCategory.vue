@@ -70,11 +70,11 @@
             }
 
             &:hover {
-                background: $HtmlElementColor;
+                background: $fs-base-color;
                 transition: all .2s linear;
 
                 a {
-                    color: #333;
+                    color: #fff;
                 }
             }
 

@@ -144,7 +144,7 @@ const handleAllChange = (e) => {
         text-align: center;
 
         a {
-            color: $xtxColor;
+            color: $fs-base-color;
         }
 
         .xtx-numbox {
@@ -158,7 +158,7 @@ const handleAllChange = (e) => {
     }
 
     .green {
-        color: $xtxColor;
+        color: $fs-base-color;
     }
 
     .f16 {

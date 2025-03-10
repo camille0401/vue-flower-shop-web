@@ -102,7 +102,7 @@ onBeforeRouteUpdate((to) => {
                     }
 
                     &:hover {
-                        color: $xtxColor;
+                        color: $fs-base-color;
                     }
                 }
             }

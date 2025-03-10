@@ -232,19 +232,19 @@ const handleAddCart = () => {
         span {
             &::before {
                 content: "¥";
-                font-size: 14px;
+                font-size: 1.4rem;
             }
 
             &:first-child {
                 color: $priceColor;
                 margin-right: 10px;
-                font-size: 22px;
+                font-size: 2.2rem;
             }
 
             &:last-child {
                 color: #999;
                 text-decoration: line-through;
-                font-size: 16px;
+                font-size: 1.6rem;
             }
         }
     }
@@ -274,13 +274,13 @@ const handleAddCart = () => {
 
                         &::before {
                             content: "•";
-                            color: $xtxColor;
+                            color: $fs-base-color;
                             margin-right: 2px;
                         }
                     }
 
                     a {
-                        color: $xtxColor;
+                        color: $fs-base-color;
                     }
                 }
             }
@@ -289,10 +289,10 @@ const handleAddCart = () => {
 
     .goods-sales {
         display: flex;
-        width: 400px;
         align-items: center;
-        text-align: center;
+        width: 400px;
         height: 140px;
+        text-align: center;
 
         li {
             flex: 1;
@@ -322,13 +322,13 @@ const handleAddCart = () => {
                     margin-top: 10px;
 
                     i {
-                        color: $xtxColor;
-                        font-size: 14px;
+                        color: $fs-base-color;
+                        font-size: 1.4rem;
                         margin-right: 2px;
                     }
 
                     &:hover {
-                        color: $xtxColor;
+                        color: $fs-base-color;
                         cursor: pointer;
                     }
                 }
@@ -349,12 +349,12 @@ const handleAddCart = () => {
 
         a {
             padding: 0 40px;
-            font-size: 18px;
+            font-size: 1.8rem;
             position: relative;
 
             >span {
                 color: $priceColor;
-                font-size: 16px;
+                font-size: 1.6rem;
                 margin-left: 10px;
             }
         }
