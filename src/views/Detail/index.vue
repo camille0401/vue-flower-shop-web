@@ -71,7 +71,7 @@
                             <el-input-number v-model="count" />
                             <!-- 按钮组件 -->
                             <div>
-                                <el-button size="large" class="btn" @click="handleAddCart">
+                                <el-button type="primary" size="large" class="btn" @click="handleAddCart">
                                     加入购物车
                                 </el-button>
                             </div>

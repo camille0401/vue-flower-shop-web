@@ -1,7 +1,7 @@
 <template>
     <h1 class="logo">
         <RouterLink to="/">
-            <span>FLOWER-SHOP</span>
+            <span>FLOWER SHOP</span>
         </RouterLink>
     </h1>
 </template>

@@ -30,21 +30,24 @@ defineProps({
 <style scoped lang='scss'>
 .home-panel {
     .head {
-        padding: 40px 0;
         display: flex;
         align-items: flex-end;
+        padding: 20px 0;
+        margin: 20px auto;
+        background: rgba(255, 51, 153, .05);
 
         h3 {
             flex: 1;
             font-size: 3.2rem;
             font-weight: normal;
-            margin-left: 6px;
             height: 35px;
             line-height: 35px;
+            text-align: center;
+            color: #333;
 
             small {
                 font-size: 1.6rem;
-                color: #999;
+                color: $fs-base-color;
                 margin-left: 20px;
             }
         }

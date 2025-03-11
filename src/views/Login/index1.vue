@@ -185,6 +185,7 @@ const doLogin = () => {
       font-size: 1.4rem;
       color: $fs-base-color;
       letter-spacing: -5px;
+      font-weight: 600;
     }
 
     .tel {
