@@ -38,6 +38,7 @@ onMounted(() => getHot())
         width: 306px;
         height: 406px;
         transition: all .5s;
+        background-color: #FFFFFF;
 
         &:hover {
             transform: translate3d(0, -3px, 0);

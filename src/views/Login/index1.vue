@@ -2,9 +2,7 @@
   <div class="fs-login-page">
     <!-- header -->
     <header class="login-header container">
-      <h1 class="logo">
-        <RouterLink to="/">FLOWER-SHOP</RouterLink>
-      </h1>
+      <FSLogo />
       <div class="header-right-box">
         <a href="javascript:;" class="tel">
           <i class="iconfont icon-service"></i>
@@ -17,47 +15,92 @@
         </RouterLink>
       </div>
     </header>
-    <section class="login-section">
-      <div class="section-left">
-        <div class="shadow"></div>
-        <h1>还未注册?</h1>
-        <RouterLink to="/" class="register-btn">
-          注册
-        </RouterLink>
-      </div>
-      <div class="section-right">
-        <h1>欢迎回来</h1>
-        <div class="form">
-          <el-form ref="loginFormRef" :model="loginForm" :rules="loginRules" label-position="top"
-            label-width="60px" status-icon>
-            <el-form-item prop="account" label="邮箱">
-              <el-input v-model="loginForm.account" />
+    <section class="login-section container">
+      <div class="form-box" :style="{ transform: `translateX(${formTransX}%)` }">
+        <!-- register -->
+        <div class="register-box" :class="{ hidden: formTransX === 0 }">
+          <h1>register</h1>
+          <!-- <input type="email" placeholder="邮箱">
+          <input type="password" placeholder="密码">
+          <input type="password" placeholder="确认密码"> -->
+          <el-form ref="loginFormRef" :model="loginForm" :rules="loginRules">
+            <el-form-item prop="account">
+              <el-input v-model="loginForm.account" placeholder="邮箱" />
             </el-form-item>
-            <el-form-item prop="password" label="密码">
-              <el-input v-model="loginForm.password" />
+            <el-form-item prop="password">
+              <el-input v-model="loginForm.password" placeholder="密码" />
             </el-form-item>
-            <div class="colum-2">
-              <el-form-item prop="agree" label-width="22px">
-                <el-checkbox v-model="loginForm.agree" size="large">
-                  我已同意隐私条款和服务条款
-                </el-checkbox>
-              </el-form-item>
-              <a href="javascript:;">忘记密码？</a>
-            </div>
-            <el-button size="large" class="subBtn" @click="doLogin">点击登录</el-button>
+            <el-form-item prop="password">
+              <el-input v-model="loginForm.password" placeholder="确认密码" />
+            </el-form-item>
+            <el-form-item prop="agree">
+              <el-checkbox v-model="loginForm.agree" size="large">
+                我已同意隐私条款和服务条款
+              </el-checkbox>
+            </el-form-item>
           </el-form>
+          <button>注册</button>
         </div>
+        <!-- login -->
+        <div class="login-box" :class="{ hidden: formTransX === 80 }">
+          <h1>login</h1>
+          <!-- <input type="text" placeholder="邮箱">
+          <input type="password" placeholder="密码"> -->
+          <el-form ref="loginFormRef" :model="loginForm" :rules="loginRules">
+            <el-form-item prop="account">
+              <el-input v-model="loginForm.account" placeholder="邮箱" />
+            </el-form-item>
+            <el-form-item prop="password">
+              <el-input v-model="loginForm.password" placeholder="密码" />
+            </el-form-item>
+            <el-form-item prop="agree">
+              <el-checkbox v-model="loginForm.agree" size="large">
+                我已同意隐私条款和服务条款
+              </el-checkbox>
+            </el-form-item>
+          </el-form>
+
+          <button @click="doLogin">登录</button>
+        </div>
+      </div>
+      <div class="con-box left">
+        <h2>欢迎来到</h2>
+        <h2><span>FLOWER-SHOP</span></h2>
+        <!-- <p>快来领取你的专属<span>宠物</span>吧</p> -->
+        <img src="@/assets/images/img-3.jpg" alt="">
+        <p>已有账号</p>
+        <button id="login" @click="showLogin">去登录</button>
+      </div>
+      <div class="con-box right">
+        <h2>欢迎来到</h2>
+        <h2><span>FLOWER-SHOP</span></h2>
+        <!-- <p>快来看看你的美丽<span>鲜花</span>吧</p> -->
+        <img src="@/assets/images/img-9.jpg" alt="">
+        <p>没有账号？</p>
+        <button id="register" @click="showRegister">去注册</button>
       </div>
     </section>
   </div>
 </template>
 <script setup name="Login">
+import FSLogo from "@/components/FSLogo.vue"
 import { reactive, ref } from 'vue'
 import 'element-plus/theme-chalk/el-message.css'
 import { ElMessage } from 'element-plus'
 import { useRouter } from 'vue-router'
 import { useUserStore } from '@/stores/user'
 import { getLoginAPI } from '@/apis/user'
+
+// login-register-animation
+const formTransX = ref(0)
+// go-register-btn
+const showRegister = () => {
+  formTransX.value = 80
+}
+// go-login-btn
+const showLogin = () => {
+  formTransX.value = 0
+}
 
 const userStore = useUserStore();
 const router = useRouter();
@@ -69,7 +112,7 @@ const loginForm = ref({
 })
 const loginRules = reactive({
   account: [
-    { required: true, message: '用户名不能为空', trigger: 'blur' }
+    { required: true, message: '邮箱不能为空', trigger: 'blur' }
   ],
   password: [
     { required: true, message: '密码不能为空', trigger: 'blur' },
@@ -111,22 +154,26 @@ const doLogin = () => {
 
 </script>
 <style scoped lang='scss'>
+.fs-login-page {
+  /* 100%窗口高度 */
+  height: 100vh;
+  /* 弹性布局 水平+垂直居中 */
+  // display: flex;
+  // justify-content: center;
+  // align-items: center;
+  /* 渐变背景 */
+  // background: linear-gradient(200deg, #f3e7e9, #e3eeff);
+  background: url("@/assets/images/login-bg.jpg") no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+// header
 .login-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-
-  .logo {
-    width: 200px;
-
-    a {
-      display: block;
-      height: 132px;
-      width: 100%;
-      text-indent: -9999px;
-      background: url("@/assets/images/logo.png") no-repeat center / contain;
-    }
-  }
+  height: 100px;
 
   .header-right-box {
     display: flex;
@@ -146,75 +193,209 @@ const doLogin = () => {
 
       i {
         font-size: 2.2rem;
-        margin-right: 10px;
+        margin-right: 15px;
       }
     }
   }
 }
 
-.login-section{
-  display: flex;
-  width: 800px;
-  // height: 600px;
-  margin: 0 auto;
-  border: 1px solid red;
-  .section-left{
-    position: relative;
-    flex: 30%;
-    padding-top: 50px;
-    text-align: center;
-    background: url("@/assets/images/login-pic.jpg") no-repeat center 100%/100%;
-    .shadow{
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0,0,0,.7);
-    }
-    h1{
-      position: absolute;
-      top: 50px;
-      left: 0;
-      right: 0;
-      font-size: 2.4rem;
-      line-height: 2em;
-      color: #FFFFFF;
+// section-form
+.login-section {
+  /* 相对定位 */
+  position: relative;
+  height: 500px;
+  background-color: #fff;
+  border-radius: 5px;
+  /* 阴影 */
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
+  margin: auto;
+  transform: translateY(50%);
 
-    }
-    button{
-      position: absolute;
-      bottom: 150px;
-      transform: translateX(-50%);
+
+  .form-box {
+    /* 绝对定位 */
+    position: absolute;
+    top: -10%;
+    left: 5%;
+    background-color: #d3b7d8;
+    width: 50%;
+    height: 610px;
+    border-radius: 5px;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+    /* 动画过渡 加速后减速 */
+    transition: 0.5s ease-in-out;
+  }
+
+  .register-box,
+  .login-box {
+    /* 弹性布局 垂直排列 */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+
+    .el-form {
+      width: 80%;
     }
   }
-  .section-right{
-    flex: 70%;
-    // border: 1px solid red;
-    padding: 50px 0;
+
+  h1 {
     text-align: center;
-    h1{
-      margin-bottom: 20px;
-      font-size: 2.4rem;
-      line-height: 2em;
-      color: #333;
-    }
-    .form{
-      padding: 0 40px;
-    }
-    .colum-2{
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 18px;
-      .el-form-item{
-        margin-bottom: 0;
-      }
-    }
+    margin-bottom: 25px;
+    /* 大写 */
+    text-transform: uppercase;
+    color: #fff;
+    /* 字间距 */
+    letter-spacing: 5px;
+  }
+
+  :deep(.el-input__wrapper) {
+    background: none;
+    box-shadow: none;
+    padding: 0;
+  }
+
+  :deep(.el-input__wrapper.is-focus) {
+    box-shadow: none !important;
+  }
+
+  :deep(.el-form-item.is-error .el-input__wrapper) {
+    box-shadow: none !important;
+  }
+
+  :deep(.el-input__wrapper:hover) {
+    box-shadow: none !important;
+  }
+
+  :deep(.el-input__inner) {
+    background-color: transparent;
+    width: 70%;
+    color: #fff;
+    border: none;
+    /* 下边框样式 */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+    padding: 10px 0;
+    text-indent: 10px;
+    margin: 8px 0;
+    font-size: 14px;
+    letter-spacing: 2px;
+  }
+
+  :deep(.el-input__inner::placeholder) {
+    color: #fff;
+  }
+
+  :deep(.el-input__inner:focus) {
+    color: #a262ad;
+    outline: none;
+    border-bottom: 1px solid #a262ad80;
+    transition: 0.5s;
+  }
+
+  :deep(.el-input__inner:focus::placeholder) {
+    opacity: 0;
+  }
+
+  :deep(.el-checkbox__label) {
+    color: #FFFFFF;
+  }
+
+  .form-box button {
+    width: 80%;
+    margin-top: 35px;
+    background-color: #f6f6f6;
+    outline: none;
+    border-radius: 8px;
+    padding: 13px;
+    color: #a262ad;
+    letter-spacing: 2px;
+    border: none;
+    cursor: pointer;
+  }
+
+  .form-box button:hover {
+    background-color: #a262ad;
+    color: #f6f6f6;
+    transition: background-color 0.5s ease;
+  }
+
+  .con-box {
+    width: 50%;
+    /* 弹性布局 垂直排列 居中 */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* 绝对定位 居中 */
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  .con-box.left {
+    left: -2%;
+  }
+
+  .con-box.right {
+    right: -2%;
+  }
+
+  .con-box h2 {
+    color: #8e9aaf;
+    font-size: 25px;
+    font-weight: bold;
+    letter-spacing: 3px;
+    text-align: center;
+    margin-bottom: 4px;
+  }
+
+  .con-box p {
+    font-size: 12px;
+    letter-spacing: 2px;
+    color: #8e9aaf;
+    text-align: center;
+  }
+
+  .con-box span {
+    color: #d3b7d8;
+  }
+
+  .con-box img {
+    width: 150px;
+    height: 150px;
+    opacity: 0.9;
+    margin: 40px 0;
+  }
+
+  .con-box button {
+    margin-top: 3%;
+    background-color: #fff;
+    color: #a262ad;
+    border: 1px solid #d3b7d8;
+    padding: 6px 10px;
+    border-radius: 5px;
+    letter-spacing: 1px;
+    outline: none;
+    cursor: pointer;
+  }
+
+  .con-box button:hover {
+    background-color: #d3b7d8;
+    color: #fff;
+  }
+
+  .hidden {
+    display: none;
+    transition: 0.5s;
   }
 }
 
-a:hover{
+
+a:hover {
   color: $fs-base-color;
 }
 

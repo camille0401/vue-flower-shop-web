@@ -33,7 +33,7 @@ html {
 
 body {
   height: 100%;
-  background: #ffffff;
+  background: linear-gradient(200deg, #f3e7e9, #e3eeff);
   color: #333;
   min-width: 1240px;
   font-family: 1em/1.4 'Microsoft Yahei', 'PingFang SC', 'Avenir', 'Segoe UI',
@@ -93,6 +93,7 @@ input[type='checkbox'] {
     color: #ccc;
   }
 }
+
 img {
   max-width: 100%;
   max-height: 100%;

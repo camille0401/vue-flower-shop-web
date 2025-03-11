@@ -112,6 +112,7 @@ onMounted(() => getGoods())
                 height: 300px;
                 margin-right: 10px;
                 margin-bottom: 10px;
+                background-color: #FFFFFF;
 
                 &:nth-last-child(-n + 4) {
                     margin-bottom: 0;
