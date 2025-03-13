@@ -1,10 +1,19 @@
 import { defineStore } from "pinia";
 import { computed, ref } from "vue";
+import { useUserStore } from "./user";
+import {
+  getCartListAPI,
+  insertCartAPI,
+  deleteCartAPI,
+  mergeCartAPI,
+} from "@/apis/cart";
 
 export const useCartStore = defineStore(
   "cart",
   () => {
+    const userStore = useUserStore();
     const cartList = ref([]);
+    const isLogin = computed(() => userStore.token);
 
     // 计算属性
     // 1. 总的数量 所有项的count之和
@@ -36,26 +45,64 @@ export const useCartStore = defineStore(
         .toFixed(2)
     );
 
+    // 查询购物车列表
+    const getCartList = async () => {
+      const res = await getCartListAPI();
+      cartList.value = res.result;
+    };
+
+    // 合并购物车
+    const mergeCartList = async () => {
+      if (cartList.value.length === 0) return;
+      const mapdata = cartList.value.map((item) => {
+        return {
+          skuId: item.skuId,
+          selected: item.selected,
+          count: item.count,
+        };
+      });
+      await mergeCartAPI(mapdata);
+      getCartList();
+    };
+
     // add-cart
     // goods: goods-obj
-    const addCart = (goods) => {
-      const { skuId, count } = goods;
+    const addCart = async (goods) => {
       // 添加购物车操作
       // 已添加过 - count + 1
       // 没有添加过 - 直接push
       // 思路：通过匹配传递过来的商品对象中的skuId能不能在cartList中找到，找到了就是添加过
-      const findObj = cartList.value.find((item) => item.skuId === goods.skuId);
-      if (findObj) {
-        findObj.count++;
+      if (isLogin.value) {
+        const res = await insertCartAPI({
+          skuId: goods.skuId,
+          count: goods.count,
+        });
+        if (res.code === "1") {
+          getCartList();
+        }
       } else {
-        cartList.value.push(goods);
+        const findObj = cartList.value.find(
+          (item) => item.skuId === goods.skuId
+        );
+        if (findObj) {
+          findObj.count++;
+        } else {
+          cartList.value.push(goods);
+        }
       }
     };
 
     // delete-cart
-    const delCart = (skuId) => {
-      const ind = cartList.value.findIndex((item) => item.skuId === skuId);
-      cartList.value.splice(ind, 1);
+    const delCart = async (skuId) => {
+      if (isLogin.value) {
+        const res = await deleteCartAPI([skuId]);
+        if (res.code === "1") {
+          getCartList();
+        }
+      } else {
+        const ind = cartList.value.findIndex((item) => item.skuId === skuId);
+        cartList.value.splice(ind, 1);
+      }
     };
 
     // cart-list-page single-checkbox
@@ -80,6 +127,7 @@ export const useCartStore = defineStore(
       delCart,
       singleCheck,
       allCheck,
+      mergeCartList,
     };
   },
   {

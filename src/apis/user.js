@@ -5,7 +5,7 @@ import request from "@/utils/request";
  * @data {*}
  * @return {*}
  */
-export function getLoginAPI(data) {
+export function loginAPI(data) {
   return request({
     url: `/login`,
     method: "POST",

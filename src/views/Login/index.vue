@@ -1,59 +1,59 @@
 <template>
-    <div>
-        <header class="login-header">
-            <div class="container m-top-20">
-                <h1 class="logo">
-                    <RouterLink to="/">小兔鲜</RouterLink>
-                </h1>
-                <RouterLink class="entry" to="/">
-                    进入网站首页
-                    <i class="iconfont icon-angle-right"></i>
-                    <i class="iconfont icon-angle-right"></i>
-                </RouterLink>
-            </div>
-        </header>
-        <section class="login-section">
-            <div class="wrapper">
-                <nav>
-                    <a href="javascript:;">账户登录</a>
-                </nav>
-                <div class="account-box">
-                    <div class="form">
-                        <el-form ref="loginFormRef" :model="loginForm" :rules="loginRules" label-position="right"
-                            label-width="60px" status-icon>
-                            <el-form-item prop="account" label="账户">
-                                <el-input v-model="loginForm.account" />
-                            </el-form-item>
-                            <el-form-item prop="password" label="密码">
-                                <el-input v-model="loginForm.password" />
-                            </el-form-item>
-                            <el-form-item prop="agree" label-width="22px">
-                                <el-checkbox v-model="loginForm.agree" size="large">
-                                    我已同意隐私条款和服务条款
-                                </el-checkbox>
-                            </el-form-item>
-                            <el-button size="large" class="subBtn" @click="doLogin">点击登录</el-button>
-                        </el-form>
-                    </div>
-                </div>
-            </div>
-        </section>
+  <div>
+    <header class="login-header">
+      <div class="container m-top-20">
+        <h1 class="logo">
+          <RouterLink to="/">小兔鲜</RouterLink>
+        </h1>
+        <RouterLink class="entry" to="/">
+          进入网站首页
+          <i class="iconfont icon-angle-right"></i>
+          <i class="iconfont icon-angle-right"></i>
+        </RouterLink>
+      </div>
+    </header>
+    <section class="login-section">
+      <div class="wrapper">
+        <nav>
+          <a href="javascript:;">账户登录</a>
+        </nav>
+        <div class="account-box">
+          <div class="form">
+            <el-form ref="loginFormRef" :model="loginForm" :rules="loginRules" label-position="right" label-width="60px"
+              status-icon>
+              <el-form-item prop="account" label="账户">
+                <el-input v-model="loginForm.account" />
+              </el-form-item>
+              <el-form-item prop="password" label="密码">
+                <el-input v-model="loginForm.password" />
+              </el-form-item>
+              <el-form-item prop="agree" label-width="22px">
+                <el-checkbox v-model="loginForm.agree" size="large">
+                  我已同意隐私条款和服务条款
+                </el-checkbox>
+              </el-form-item>
+              <el-button size="large" class="subBtn" @click="doLogin">点击登录</el-button>
+            </el-form>
+          </div>
+        </div>
+      </div>
+    </section>
 
-        <footer class="login-footer">
-            <div class="container">
-                <p>
-                    <a href="javascript:;">关于我们</a>
-                    <a href="javascript:;">帮助中心</a>
-                    <a href="javascript:;">售后服务</a>
-                    <a href="javascript:;">配送与验收</a>
-                    <a href="javascript:;">商务合作</a>
-                    <a href="javascript:;">搜索推荐</a>
-                    <a href="javascript:;">友情链接</a>
-                </p>
-                <p>CopyRight &copy; 小兔鲜儿</p>
-            </div>
-        </footer>
-    </div>
+    <footer class="login-footer">
+      <div class="container">
+        <p>
+          <a href="javascript:;">关于我们</a>
+          <a href="javascript:;">帮助中心</a>
+          <a href="javascript:;">售后服务</a>
+          <a href="javascript:;">配送与验收</a>
+          <a href="javascript:;">商务合作</a>
+          <a href="javascript:;">搜索推荐</a>
+          <a href="javascript:;">友情链接</a>
+        </p>
+        <p>CopyRight &copy; 小兔鲜儿</p>
+      </div>
+    </footer>
+  </div>
 </template>
 <script setup name="Login">
 import { reactive, ref } from 'vue'
@@ -61,283 +61,283 @@ import 'element-plus/theme-chalk/el-message.css'
 import { ElMessage } from 'element-plus'
 import { useRouter } from 'vue-router'
 import { useUserStore } from '@/stores/user'
-import { getLoginAPI } from '@/apis/user'
+import { loginAPI } from '@/apis/user'
 
 const userStore = useUserStore();
 const router = useRouter();
 const loginFormRef = ref(null);
 const loginForm = ref({
-    account: "",
-    password: "",
-    agree: ""
+  account: "",
+  password: "",
+  agree: ""
 })
 const loginRules = reactive({
-    account: [
-        { required: true, message: '用户名不能为空', trigger: 'blur' }
-    ],
-    password: [
-        { required: true, message: '密码不能为空', trigger: 'blur' },
-        { min: 6, max: 14, message: '密码长度为6-14个字符', trigger: 'blur' },
-    ],
-    agree: [
-        {
-            validator: (rule, value, callback) => {
-                // 自定义校验逻辑
-                // 勾选就通过 不勾选就不通过
-                if (value) {
-                    callback()
-                } else {
-                    callback(new Error('请勾选协议'))
-                }
-            }
+  account: [
+    { required: true, message: '用户名不能为空', trigger: 'blur' }
+  ],
+  password: [
+    { required: true, message: '密码不能为空', trigger: 'blur' },
+    { min: 6, max: 14, message: '密码长度为6-14个字符', trigger: 'blur' },
+  ],
+  agree: [
+    {
+      validator: (rule, value, callback) => {
+        // 自定义校验逻辑
+        // 勾选就通过 不勾选就不通过
+        if (value) {
+          callback()
+        } else {
+          callback(new Error('请勾选协议'))
         }
-    ]
+      }
+    }
+  ]
 })
 
 const doLogin = () => {
-    const { account, password } = loginForm.value
-    // 调用实例方法
-    loginFormRef.value.validate(async (valid) => {
-        // valid: 所有表单都通过校验  才为true
-        console.log(valid)
-        // 以valid做为判断条件 如果通过校验才执行登录逻辑
-        if (valid) {
-            // TODO LOGIN
-            const res = await getLoginAPI({ account, password })
-            userStore.getUserInfo(res.result || {});
-            // 1. 提示用户
-            ElMessage({ type: 'success', message: '登录成功' })
-            // 2. 跳转首页
-            router.replace({ path: '/' })
-        }
-    })
+  const { account, password } = loginForm.value
+  // 调用实例方法
+  loginFormRef.value.validate(async (valid) => {
+    // valid: 所有表单都通过校验  才为true
+    console.log(valid)
+    // 以valid做为判断条件 如果通过校验才执行登录逻辑
+    if (valid) {
+      // TODO LOGIN
+      const res = await loginAPI({ account, password })
+      userStore.getUserInfo(res.result || {});
+      // 1. 提示用户
+      ElMessage({ type: 'success', message: '登录成功' })
+      // 2. 跳转首页
+      router.replace({ path: '/' })
+    }
+  })
 }
 
 </script>
 <style scoped lang='scss'>
 .login-header {
-    background: #fff;
-    border-bottom: 1px solid #e4e4e4;
+  background: #fff;
+  border-bottom: 1px solid #e4e4e4;
 
-    .container {
-        display: flex;
-        align-items: flex-end;
-        justify-content: space-between;
+  .container {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+  }
+
+  .logo {
+    width: 200px;
+
+    a {
+      display: block;
+      height: 132px;
+      width: 100%;
+      text-indent: -9999px;
+      background: url("@/assets/images/logo.png") no-repeat center 18px / contain;
     }
+  }
 
-    .logo {
-        width: 200px;
+  .sub {
+    flex: 1;
+    font-size: 2rem;
+    font-weight: normal;
+    margin-bottom: 38px;
+    margin-left: 20px;
+    color: #666;
+  }
 
-        a {
-            display: block;
-            height: 132px;
-            width: 100%;
-            text-indent: -9999px;
-            background: url("@/assets/images/logo.png") no-repeat center 18px / contain;
-        }
+  .entry {
+    width: 120px;
+    margin-bottom: 38px;
+    font-size: 1.6rem;
+
+    i {
+      font-size: 1.4rem;
+      color: $fs-base-color;
+      letter-spacing: -5px;
     }
-
-    .sub {
-        flex: 1;
-        font-size: 2rem;
-        font-weight: normal;
-        margin-bottom: 38px;
-        margin-left: 20px;
-        color: #666;
-    }
-
-    .entry {
-        width: 120px;
-        margin-bottom: 38px;
-        font-size: 1.6rem;
-
-        i {
-            font-size: 1.4rem;
-            color: $fs-base-color;
-            letter-spacing: -5px;
-        }
-    }
+  }
 }
 
 .login-section {
-    background: url('@/assets/images/login-bg.png') no-repeat center / cover;
-    height: 488px;
-    position: relative;
+  background: url('@/assets/images/login-bg.png') no-repeat center / cover;
+  height: 488px;
+  position: relative;
 
-    .wrapper {
-        width: 380px;
-        background: #fff;
-        position: absolute;
-        left: 50%;
-        top: 54px;
-        transform: translate3d(100px, 0, 0);
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+  .wrapper {
+    width: 380px;
+    background: #fff;
+    position: absolute;
+    left: 50%;
+    top: 54px;
+    transform: translate3d(100px, 0, 0);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
 
-        nav {
-            font-size: 1.4rem;
-            height: 55px;
-            margin-bottom: 20px;
-            border-bottom: 1px solid #f5f5f5;
-            display: flex;
-            padding: 0 40px;
-            text-align: right;
-            align-items: center;
+    nav {
+      font-size: 1.4rem;
+      height: 55px;
+      margin-bottom: 20px;
+      border-bottom: 1px solid #f5f5f5;
+      display: flex;
+      padding: 0 40px;
+      text-align: right;
+      align-items: center;
 
-            a {
-                flex: 1;
-                line-height: 1;
-                display: inline-block;
-                font-size: 1.8rem;
-                position: relative;
-                text-align: center;
-            }
-        }
+      a {
+        flex: 1;
+        line-height: 1;
+        display: inline-block;
+        font-size: 1.8rem;
+        position: relative;
+        text-align: center;
+      }
     }
+  }
 }
 
 .login-footer {
-    padding: 30px 0 50px;
-    background: #fff;
+  padding: 30px 0 50px;
+  background: #fff;
 
-    p {
-        text-align: center;
-        color: #999;
-        padding-top: 20px;
+  p {
+    text-align: center;
+    color: #999;
+    padding-top: 20px;
 
-        a {
-            line-height: 1;
-            padding: 0 10px;
-            color: #999;
-            display: inline-block;
+    a {
+      line-height: 1;
+      padding: 0 10px;
+      color: #999;
+      display: inline-block;
 
-            ~a {
-                border-left: 1px solid #ccc;
-            }
-        }
+      ~a {
+        border-left: 1px solid #ccc;
+      }
     }
+  }
 }
 
 .account-box {
-    .toggle {
-        padding: 15px 40px;
-        text-align: right;
+  .toggle {
+    padding: 15px 40px;
+    text-align: right;
 
-        a {
-            color: $fs-base-color;
+    a {
+      color: $fs-base-color;
 
-            i {
-                font-size: 14px;
-            }
+      i {
+        font-size: 14px;
+      }
+    }
+  }
+
+  .form {
+    padding: 0 20px 20px 20px;
+
+    &-item {
+      margin-bottom: 28px;
+
+      .input {
+        position: relative;
+        height: 36px;
+
+        >i {
+          width: 34px;
+          height: 34px;
+          background: #cfcdcd;
+          color: #fff;
+          position: absolute;
+          left: 1px;
+          top: 1px;
+          text-align: center;
+          line-height: 3.4rem;
+          font-size: 1.8rem;
         }
+
+        input {
+          padding-left: 44px;
+          border: 1px solid #cfcdcd;
+          height: 36px;
+          line-height: 36px;
+          width: 100%;
+
+          &.error {
+            border-color: $priceColor;
+          }
+
+          &.active,
+          &:focus {
+            border-color: $fs-base-color;
+          }
+        }
+
+        .code {
+          position: absolute;
+          right: 1px;
+          top: 1px;
+          text-align: center;
+          line-height: 34px;
+          font-size: 1.4rem;
+          background: #f5f5f5;
+          color: #666;
+          width: 90px;
+          height: 34px;
+          cursor: pointer;
+        }
+      }
+
+      >.error {
+        position: absolute;
+        font-size: 1.2rem;
+        line-height: 2.8rem;
+        color: $priceColor;
+
+        i {
+          font-size: 1.4rem;
+          margin-right: 2px;
+        }
+      }
     }
 
-    .form {
-        padding: 0 20px 20px 20px;
-
-        &-item {
-            margin-bottom: 28px;
-
-            .input {
-                position: relative;
-                height: 36px;
-
-                >i {
-                    width: 34px;
-                    height: 34px;
-                    background: #cfcdcd;
-                    color: #fff;
-                    position: absolute;
-                    left: 1px;
-                    top: 1px;
-                    text-align: center;
-                    line-height: 3.4rem;
-                    font-size: 1.8rem;
-                }
-
-                input {
-                    padding-left: 44px;
-                    border: 1px solid #cfcdcd;
-                    height: 36px;
-                    line-height: 36px;
-                    width: 100%;
-
-                    &.error {
-                        border-color: $priceColor;
-                    }
-
-                    &.active,
-                    &:focus {
-                        border-color: $fs-base-color;
-                    }
-                }
-
-                .code {
-                    position: absolute;
-                    right: 1px;
-                    top: 1px;
-                    text-align: center;
-                    line-height: 34px;
-                    font-size: 1.4rem;
-                    background: #f5f5f5;
-                    color: #666;
-                    width: 90px;
-                    height: 34px;
-                    cursor: pointer;
-                }
-            }
-
-            >.error {
-                position: absolute;
-                font-size: 1.2rem;
-                line-height: 2.8rem;
-                color: $priceColor;
-
-                i {
-                    font-size: 1.4rem;
-                    margin-right: 2px;
-                }
-            }
-        }
-
-        .agree {
-            a {
-                color: #069;
-            }
-        }
-
-        .btn {
-            display: block;
-            width: 100%;
-            height: 40px;
-            color: #fff;
-            text-align: center;
-            line-height: 4rem;
-            background: $fs-base-color;
-
-            &.disabled {
-                background: #cfcdcd;
-            }
-        }
+    .agree {
+      a {
+        color: #069;
+      }
     }
 
-    .action {
-        padding: 20px 40px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
+    .btn {
+      display: block;
+      width: 100%;
+      height: 40px;
+      color: #fff;
+      text-align: center;
+      line-height: 4rem;
+      background: $fs-base-color;
 
-        .url {
-            a {
-                color: #999;
-                margin-left: 10px;
-            }
-        }
+      &.disabled {
+        background: #cfcdcd;
+      }
     }
+  }
+
+  .action {
+    padding: 20px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .url {
+      a {
+        color: #999;
+        margin-left: 10px;
+      }
+    }
+  }
 }
 
 .subBtn {
-    background: $fs-base-color;
-    width: 100%;
-    color: #fff;
+  background: $fs-base-color;
+  width: 100%;
+  color: #fff;
 }
 </style>

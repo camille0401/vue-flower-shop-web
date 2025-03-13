@@ -32,13 +32,18 @@ const router = createRouter({
           name: "cartlist",
           component: () => import("@/views/CartList/index.vue"),
         },
+        {
+          path: "settlement",
+          name: "settlement",
+          component: () => import("@/views/Settlement/index.vue"),
+        },
       ],
     },
     {
       path: "/login",
       name: "login",
       component: () => import("@/views/Login/index1.vue"),
-    }
+    },
   ],
   // 路由滚动行为定制
   scrollBehavior() {
@@ -47,6 +52,5 @@ const router = createRouter({
     };
   },
 });
-
 
 export default router;
