@@ -55,7 +55,7 @@
               <td colspan="6">
                 <div class="cart-none">
                   <el-empty description="购物车列表为空">
-                    <el-button type="primary">随便逛逛</el-button>
+                    <el-button type="primary" @click="toHomePage">随便逛逛</el-button>
                   </el-empty>
                 </div>
               </td>
@@ -71,7 +71,7 @@
           <span class="red">¥ {{ cartStore.cartSelectedPrice }} </span>
         </div>
         <div class="total">
-          <el-button size="large" type="primary" @click="toSettlement">下单结算</el-button>
+          <el-button size="large" type="primary" @click="toSettlementPage">下单结算</el-button>
         </div>
       </div>
     </div>
@@ -94,8 +94,11 @@ const handleAllChange = (e) => {
   cartStore.allCheck(e)
 }
 const router = useRouter();
-const toSettlement = () => {
+const toSettlementPage = () => {
   router.push({ path: "/settlement" })
+}
+const toHomePage = () => {
+  router.push({ path: "/" })
 }
 
 </script>
