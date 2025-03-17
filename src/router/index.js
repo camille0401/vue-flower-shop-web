@@ -37,6 +37,16 @@ const router = createRouter({
           name: "settlement",
           component: () => import("@/views/Settlement/index.vue"),
         },
+        {
+          path: "pay",
+          name: "pay",
+          component: () => import("@/views/Pay/index.vue"),
+        },
+        {
+          path: "pay/result",
+          name: "payResult",
+          component: () => import("@/views/Pay/PayResult.vue"),
+        },
       ],
     },
     {

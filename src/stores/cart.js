@@ -123,6 +123,7 @@ export const useCartStore = defineStore(
       cartIsAll,
       cartSelectedCount,
       cartSelectedPrice,
+      getCartList,
       addCart,
       delCart,
       singleCheck,

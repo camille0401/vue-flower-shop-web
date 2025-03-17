@@ -2,6 +2,10 @@
 import AddressList from './components/AddressList.vue';
 import { onMounted, ref } from 'vue';
 import { getCheckInfoAPI, createOrderAPI } from '@/apis/order';
+import { useRouter } from 'vue-router';
+import { useCartStore } from '@/stores/cart';
+
+const router = useRouter();
 
 const checkInfo = ref({}); // 订单对象
 const curAddress = ref({});
@@ -27,6 +31,28 @@ const confirmAddress = () => {
   activeAddress.value = {}
 }
 const showAddressAddDialog = ref(false);
+
+// create-order
+const hanldeCreateOrder = async () => {
+  const goods = checkInfo.value.goods.map(item => ({ skuId: item.skuId, count: item.count }))
+  const res = await createOrderAPI({
+    deliveryTimeType: 1,
+    payType: 1,
+    payChannel: 1,
+    buyerMessage: '',
+    addressId: curAddress.value.id,
+    goods,
+  })
+  const orderId = res.result.id
+  router.push({
+    path: '/pay',
+    query: {
+      id: orderId
+    }
+  })
+  // update-cart-list
+  useCartStore().getCartList();
+}
 
 </script>
 
@@ -122,7 +148,7 @@ const showAddressAddDialog = ref(false);
         </div>
         <!-- 提交订单 -->
         <div class="submit">
-          <el-button type="primary" size="large">提交订单</el-button>
+          <el-button type="primary" size="large" @click="hanldeCreateOrder">提交订单</el-button>
         </div>
       </div>
     </div>

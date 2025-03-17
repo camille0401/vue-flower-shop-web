@@ -44,7 +44,7 @@ defineEmits(["switchAddress"])
       &.active,
       &:hover {
         border-color: $fs-base-color;
-        background: lighten($fs-base-color, 50%);
+        background: light($fs-base-color, 50%);
       }
 
       >ul {

@@ -12,7 +12,7 @@ export const getCheckInfoAPI = () => {
 };
 
 /**
- * @description: order-api
+ * @description: create-order
  * @return {*}
  */
 export const createOrderAPI = (data) => {
@@ -20,5 +20,16 @@ export const createOrderAPI = (data) => {
     url: "/member/order",
     method: "POST",
     data,
+  });
+};
+
+/**
+ * @description: create-order
+ * @return {*}
+ */
+export const getOrderAPI = (id) => {
+  console.log(id);
+  return request({
+    url: `/member/order/${id}`,
   });
 };

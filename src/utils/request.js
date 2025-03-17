@@ -2,7 +2,7 @@ import axios from "axios";
 import "element-plus/theme-chalk/el-message.css";
 import { ElMessage } from "element-plus";
 import { useUserStore } from "@/stores/user";
-import { useRouter } from "vue-router";
+import router from "@/router";
 
 // 创建axios实例
 const request = axios.create({
@@ -31,18 +31,20 @@ request.interceptors.response.use(
     return Promise.resolve(res.data);
   },
   (error) => {
-    // 401 token timeout
-    const userStore = useUserStore();
-    const router = useRouter();
-    if (error.response.status === 401) {
-      userStore.clearUserInfo();
-      router.push("/login");
-    }
+    console.log(error);
     // 统一错误提示
     ElMessage({
       type: "warning",
       message: error.response.data.message,
     });
+    // 401 token timeout
+    const userStore = useUserStore();
+    console.log(router);
+    if (error.response.status === 401) {
+      userStore.clearUserInfo();
+      console.log("======");
+      router.replace("/login");
+    }
     return Promise.reject(error);
   }
 );
