@@ -7,7 +7,7 @@
       <el-input v-model="addressForm.contact" />
     </el-form-item>
     <el-form-item label="所在地区" required>
-      <el-row :gutter="10" style="width: 100%;" justify="space-between">
+      <el-row style="width: 100%;" justify="space-between">
         <el-col :span="8">
           <el-form-item prop="prov">
             <el-select v-model="addressForm.prov" placeholder="Activity zone1">
