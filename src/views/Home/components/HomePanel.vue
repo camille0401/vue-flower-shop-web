@@ -1,56 +1,56 @@
 <template>
-    <div class="home-panel">
-        <div class="container">
-            <div class="head">
-                <!-- 主标题和副标题 -->
-                <h3>
-                    {{ title }}<small>{{ subTitle }}</small>
-                </h3>
-            </div>
-            <!-- 主体内容区域 -->
-            <slot name="main"></slot>
-        </div>
+  <div class="home-panel">
+    <div class="container">
+      <div class="head">
+        <!-- 主标题和副标题 -->
+        <h3>
+          {{ title }}<small>{{ subTitle }}</small>
+        </h3>
+      </div>
+      <!-- 主体内容区域 -->
+      <slot name="main"></slot>
     </div>
+  </div>
 </template>
 
 <script setup name="HomePanel">
 import { defineProps } from "vue"
 
 defineProps({
-    title: {
-        type: String,
-    },
-    subTitle: {
-        type: String
-    }
+  title: {
+    type: String,
+  },
+  subTitle: {
+    type: String
+  }
 })
 
 </script>
 
 <style scoped lang='scss'>
 .home-panel {
-    .head {
-        display: flex;
-        align-items: flex-end;
-        padding: 20px 0;
-        margin: 20px auto;
-        background: rgba(255, 51, 153, .05);
+  .head {
+    display: flex;
+    align-items: flex-end;
+    padding: 20px 0;
+    margin: 20px auto;
+    background: rgba(255, 51, 153, .05);
 
-        h3 {
-            flex: 1;
-            font-size: 3.2rem;
-            font-weight: normal;
-            height: 35px;
-            line-height: 35px;
-            text-align: center;
-            color: #333;
+    h3 {
+      flex: 1;
+      font-size: 3.2rem;
+      font-weight: normal;
+      height: 35px;
+      line-height: 35px;
+      text-align: center;
+      color: #333;
 
-            small {
-                font-size: 1.6rem;
-                color: $fs-base-color;
-                margin-left: 20px;
-            }
-        }
+      small {
+        font-size: 1.6rem;
+        color: $fs-base-color;
+        margin-left: 20px;
+      }
     }
+  }
 }
 </style>

@@ -38,6 +38,11 @@ const router = createRouter({
           component: () => import("@/views/Settlement/index.vue"),
         },
         {
+          path: "settlement1",
+          name: "settlement1",
+          component: () => import("@/views/Settlement/index1.vue"),
+        },
+        {
           path: "pay",
           name: "pay",
           component: () => import("@/views/Pay/index.vue"),

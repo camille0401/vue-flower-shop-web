@@ -53,11 +53,18 @@
             <el-form-item prop="password">
               <el-input v-model="loginForm.password" placeholder="密码" />
             </el-form-item>
-            <el-form-item prop="agree">
-              <el-checkbox v-model="loginForm.agree" size="large">
-                我已同意隐私条款和服务条款
-              </el-checkbox>
-            </el-form-item>
+            <el-row>
+              <el-col :span="12">
+                <el-form-item prop="agree" style="margin-bottom: 0;">
+                  <el-checkbox v-model="loginForm.agree" size="large">
+                    我已同意隐私条款和服务条款
+                  </el-checkbox>
+                </el-form-item>
+              </el-col>
+              <el-col :span="12" style="display: flex; align-items: center; justify-content: flex-end;">
+                <a class="forget-btn" href="javascript:void(0);">忘记密码？</a>
+              </el-col>
+            </el-row>
           </el-form>
 
           <button @click="doLogin">登录</button>
@@ -90,17 +97,6 @@ import { ElMessage } from 'element-plus'
 import { useRouter } from 'vue-router'
 import { useUserStore } from '@/stores/user'
 import { loginAPI } from '@/apis/user'
-
-// login-register-animation
-const formTransX = ref(0)
-// go-register-btn
-const showRegister = () => {
-  formTransX.value = 80
-}
-// go-login-btn
-const showLogin = () => {
-  formTransX.value = 0
-}
 
 const userStore = useUserStore();
 const router = useRouter();
@@ -153,6 +149,19 @@ const doLogin = () => {
       router.replace({ path: '/' })
     }
   })
+}
+
+// login-register-animation
+const formTransX = ref(0)
+// go-register-btn
+const showRegister = () => {
+  formTransX.value = 80
+  loginFormRef.value.resetFields()
+}
+// go-login-btn
+const showLogin = () => {
+  formTransX.value = 0
+  loginFormRef.value.resetFields()
 }
 
 </script>
@@ -403,7 +412,17 @@ a:hover {
   color: $fs-base-color;
 }
 
+.forget-btn {
+  color: #fff;
+  line-height: 32px;
+
+  &:hover {
+    color: $fs-base-color
+  }
+}
+
 .subBtn {
+
   background: $fs-base-color;
   width: 100%;
   color: #fff;

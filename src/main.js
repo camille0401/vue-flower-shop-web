@@ -8,7 +8,7 @@ import { lazyImgPlugin } from "@/directives";
 
 const app = createApp(App);
 
-document.title = "FLOWER SHOP";
+document.title = "FLOWER MARKET";
 
 app.use(createPinia().use(piniaPluginPersistedstate));
 app.use(router);

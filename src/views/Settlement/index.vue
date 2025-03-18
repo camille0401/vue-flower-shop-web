@@ -14,7 +14,7 @@ const getCheckInfo = async () => {
   checkInfo.value = res?.result || {};
   curAddress.value = res.result.userAddresses.find(item => item.isDefault === 0);
 }
-onMounted(() => getCheckInfo())
+// onMounted(() => getCheckInfo())
 
 // address-modal
 const activeAddress = ref({})
@@ -65,7 +65,7 @@ const hanldeCreateOrder = async () => {
         <div class="box-body">
           <div class="address">
             <div class="text">
-              <div class="none" v-if="!curAddress">您需要先添加收货地址才可提交订单。</div>
+              <div class="none" v-if="!curAddress.receiver">您需要先添加收货地址才可提交订单。</div>
               <ul v-else>
                 <li><span>收<i />货<i />人：</span>{{ curAddress.receiver }}</li>
                 <li><span>联系方式：</span>{{ curAddress.contact }}</li>
@@ -73,8 +73,8 @@ const hanldeCreateOrder = async () => {
               </ul>
             </div>
             <div class="action">
-              <el-button size="large" @click="showAddressListDialog = true">切换地址</el-button>
-              <el-button size="large" @click="showAddressAddDialog = true">添加地址</el-button>
+              <el-button size="large" type="primary" @click="showAddressListDialog = true">切换地址</el-button>
+              <el-button size="large" type="primary" @click="showAddressAddDialog = true">添加地址</el-button>
             </div>
           </div>
         </div>
