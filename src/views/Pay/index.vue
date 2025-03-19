@@ -139,7 +139,7 @@ const payUrl = `${baseURL}pay/aliPay?orderId=${route.query.id}&redirect=${redire
 
     &.active,
     &:hover {
-      border-color: $fs-base-color;
+      border-color: $fs-base-color-light;
     }
 
     &.alipay {

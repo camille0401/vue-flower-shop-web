@@ -34,10 +34,10 @@ html {
 }
 
 body {
-  min-height: 100%;
+  min-width: 1240px;
+  min-height: 100vh;
   background: linear-gradient(to bottom, #f3e7e9 0%, #e3eeff 100%) no-repeat;
   color: #333;
-  min-width: 1240px;
   font-family: 1em/1.4 'Microsoft Yahei', 'PingFang SC', 'Avenir', 'Segoe UI',
     'Hiragino Sans GB', 'STHeiti', 'Microsoft Sans Serif', 'WenQuanYi Micro Hei',
     sans-serif;

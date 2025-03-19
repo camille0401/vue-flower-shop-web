@@ -70,7 +70,7 @@
             }
 
             &:hover {
-                background: $fs-base-color;
+                background: $fs-base-color-light;
                 transition: all .2s linear;
 
                 a {

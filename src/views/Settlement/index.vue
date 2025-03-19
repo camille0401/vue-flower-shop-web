@@ -230,7 +230,7 @@ const hanldeCreateOrder = async () => {
     }
 
     >a {
-      color: $fs-base-color;
+      color: $fs-base-color-light;
       width: 160px;
       text-align: center;
       height: 90px;
@@ -317,7 +317,7 @@ const hanldeCreateOrder = async () => {
 
   &.active,
   &:hover {
-    border-color: $fs-base-color;
+    border-color: $fs-base-color-light;
   }
 }
 

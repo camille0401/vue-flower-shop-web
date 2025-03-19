@@ -195,7 +195,7 @@ const showLogin = () => {
 
     i {
       font-size: 1.4rem;
-      color: $fs-base-color;
+      color: $fs-base-color-dark;
       letter-spacing: -5px;
       font-weight: 600;
     }
@@ -409,7 +409,7 @@ const showLogin = () => {
 
 
 a:hover {
-  color: $fs-base-color;
+  color: $fs-base-color-dark;
 }
 
 .forget-btn {
@@ -417,13 +417,13 @@ a:hover {
   line-height: 32px;
 
   &:hover {
-    color: $fs-base-color
+    color: $fs-base-color-dark
   }
 }
 
 .subBtn {
 
-  background: $fs-base-color;
+  background: $fs-base-color-dark;
   width: 100%;
   color: #fff;
 }

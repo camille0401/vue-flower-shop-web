@@ -1,12 +1,10 @@
 <template>
   <div class="app-header-sticky" :class="{ show: y > 98 }">
-    <div class="container">
+    <div class="container header-sticky-box">
       <FSLogo />
       <!-- 导航区域 -->
-      <LayoutHeaderUI />
-      <div class="right">
-        <RouterLink to="/">品牌</RouterLink>
-        <RouterLink to="/">专题</RouterLink>
+      <div class="right-box">
+        <LayoutHeaderUI />
       </div>
     </div>
   </div>
@@ -19,7 +17,6 @@ import { useScroll } from '@vueuse/core';
 
 const { y } = useScroll(window);
 
-console.log(y)
 </script>
 <style scoped lang='scss'>
 .app-header-sticky {
@@ -29,7 +26,7 @@ console.log(y)
   z-index: 999;
   width: 100%;
   height: 100px;
-  background-color: #ffffff;
+  background-color: $fs-base-color-light;
   // border-bottom: 1px solid #e4e4e4;
   box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .1);
   // 此处为关键样式!!!
@@ -44,28 +41,29 @@ console.log(y)
     opacity: 1;
   }
 
-  .container {
+  .header-sticky-box {
     display: flex;
     align-items: center;
-  }
 
-  .right {
-    width: 220px;
-    display: flex;
-    text-align: center;
-    padding-left: 40px;
-    border-left: 2px solid $fs-base-color;
+    .right-box {
+      display: flex;
+      align-items: center;
+      width: calc(100% - 250px);
+      padding-left: 40px;
 
-    a {
-      width: 38px;
-      margin-right: 40px;
-      font-size: 1.6rem;
-      line-height: 1;
+      a {
+        &:hover {
+          color: $fs-base-color-dark;
+          border-bottom: 1px solid $fs-base-color-dark;
+        }
+      }
 
-      &:hover {
-        color: $fs-base-color;
+      .active {
+        color: $fs-base-color-dark;
+        border-bottom: 1px solid $fs-base-color-dark;
       }
     }
   }
+
 }
 </style>

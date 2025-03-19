@@ -452,10 +452,8 @@
 
 <style scoped lang='scss'>
 .fs-footer {
-  background-color: #333333;
   padding-top: 20px;
   margin-top: 20px;
-  color: #ffffff;
 
   .fs-footer-nav {
     width: 100%;
@@ -472,10 +470,6 @@
       dt {
         font-size: 16px;
         font-weight: bold;
-
-        a {
-          color: #fff;
-        }
       }
 
       dd {
@@ -489,10 +483,9 @@
           a {
             // color: #222222;
             text-decoration: none;
-            color: #ffffff;
 
             &:hover {
-              color: $fs-base-color;
+              color: $fs-base-color-light;
             }
           }
         }
@@ -516,7 +509,6 @@
       a {
         display: flex;
         align-items: center;
-        color: #ffffff;
 
         img {
           width: 40px;
@@ -535,7 +527,6 @@
       margin: 0 auto;
       padding-bottom: 20px;
       padding-top: 20px;
-      color: #ffffff;
     }
   }
 }

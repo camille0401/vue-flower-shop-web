@@ -153,7 +153,7 @@ const doLogin = () => {
 
     i {
       font-size: 1.4rem;
-      color: $fs-base-color;
+      color: $fs-base-color-light;
       letter-spacing: -5px;
     }
   }
@@ -223,7 +223,7 @@ const doLogin = () => {
     text-align: right;
 
     a {
-      color: $fs-base-color;
+      color: $fs-base-color-light;
 
       i {
         font-size: 14px;
@@ -267,7 +267,7 @@ const doLogin = () => {
 
           &.active,
           &:focus {
-            border-color: $fs-base-color;
+            border-color: $fs-base-color-light;
           }
         }
 
@@ -312,7 +312,7 @@ const doLogin = () => {
       color: #fff;
       text-align: center;
       line-height: 4rem;
-      background: $fs-base-color;
+      background: $fs-base-color-light;
 
       &.disabled {
         background: #cfcdcd;
@@ -336,7 +336,7 @@ const doLogin = () => {
 }
 
 .subBtn {
-  background: $fs-base-color;
+  background: $fs-base-color-light;
   width: 100%;
   color: #fff;
 }

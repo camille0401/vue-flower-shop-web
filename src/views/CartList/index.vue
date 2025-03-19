@@ -151,7 +151,7 @@ const toHomePage = () => {
     text-align: center;
 
     a {
-      color: $fs-base-color;
+      color: $fs-base-color-light;
     }
 
     .xtx-numbox {
@@ -165,7 +165,7 @@ const toHomePage = () => {
   }
 
   .green {
-    color: $fs-base-color;
+    color: $fs-base-color-light;
   }
 
   .f16 {

@@ -8,7 +8,7 @@
             v-if="val.picture" :src="val.picture" />
           <span :class="{ selected: val.selected, disabled: val.disabled }" @click="clickSpecs(item, val)" v-else>{{
             val.name
-            }}</span>
+          }}</span>
         </template>
       </dd>
     </dl>
@@ -152,7 +152,7 @@ export default {
   cursor: pointer;
 
   &.selected {
-    border-color: $fs-base-color;
+    border-color: $fs-base-color-light;
   }
 
   &.disabled {

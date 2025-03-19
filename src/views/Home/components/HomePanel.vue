@@ -47,7 +47,7 @@ defineProps({
 
       small {
         font-size: 1.6rem;
-        color: $fs-base-color;
+        color: $fs-base-color-dark;
         margin-left: 20px;
       }
     }

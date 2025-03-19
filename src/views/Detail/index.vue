@@ -274,13 +274,13 @@ const handleAddCart = () => {
 
                         &::before {
                             content: "•";
-                            color: $fs-base-color;
+                            color: $fs-base-color-light;
                             margin-right: 2px;
                         }
                     }
 
                     a {
-                        color: $fs-base-color;
+                        color: $fs-base-color-light;
                     }
                 }
             }
@@ -322,13 +322,13 @@ const handleAddCart = () => {
                     margin-top: 10px;
 
                     i {
-                        color: $fs-base-color;
+                        color: $fs-base-color-light;
                         font-size: 1.4rem;
                         margin-right: 2px;
                     }
 
                     &:hover {
-                        color: $fs-base-color;
+                        color: $fs-base-color-light;
                         cursor: pointer;
                     }
                 }

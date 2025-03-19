@@ -2,6 +2,9 @@
   <nav class="app-topnav">
     <div class="container">
       <ul>
+        <li>
+          <RouterLink to="/"><i class="iconfont icon-home"></i></RouterLink>
+        </li>
         <template v-if="userStore?.userInfo?.token">
           <li><a href="javascript:;"><i class="iconfont icon-user"></i>{{ userStore?.userInfo?.account }}</a></li>
           <li>
@@ -15,7 +18,9 @@
           <li><a href="javascript:;">会员中心</a></li>
         </template>
         <template v-else>
-          <li><RouterLink to="/login">请先登录</RouterLink></li>
+          <li>
+            <RouterLink to="/login">请先登录</RouterLink>
+          </li>
           <li><a href="javascript:;">帮助中心</a></li>
           <li><a href="javascript:;">关于我们</a></li>
         </template>
@@ -62,7 +67,7 @@ const confirmLogout = () => {
         }
 
         &:hover {
-          color: $fs-base-color;
+          color: $fs-base-color-dark;
         }
       }
 
