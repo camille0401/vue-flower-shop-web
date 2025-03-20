@@ -30,15 +30,12 @@ onMounted(() => getHot())
 
 <style lang="scss" scoped>
 .goods-list {
-  // display: flex;
-  // justify-content: space-between;
   display: grid;
   grid-template-columns: repeat(4, calc((100% - 30px)/4));
   gap: 10px;
-  height: 426px;
 
-  li {
-    width: 100%;
+  a {
+    display: block;
     height: 406px;
     transition: all .5s;
     background-color: #FFFFFF;
@@ -54,8 +51,8 @@ onMounted(() => getHot())
     }
 
     p {
-      font-size: 2.2rem;
-      padding-top: 12px;
+      font-size: 2rem;
+      padding: 12px 12px 0;
       text-align: center;
     }
 

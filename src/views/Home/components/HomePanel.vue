@@ -1,15 +1,13 @@
 <template>
   <div class="home-panel">
-    <div class="container">
-      <div class="head">
-        <!-- 主标题和副标题 -->
-        <h3>
-          {{ title }}<small>{{ subTitle }}</small>
-        </h3>
-      </div>
-      <!-- 主体内容区域 -->
-      <slot name="main"></slot>
+    <div class="head">
+      <!-- 主标题和副标题 -->
+      <h3>
+        {{ title }}<small>{{ subTitle }}</small>
+      </h3>
     </div>
+    <!-- 主体内容区域 -->
+    <slot name="main"></slot>
   </div>
 </template>
 

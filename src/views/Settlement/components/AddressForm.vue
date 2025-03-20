@@ -53,4 +53,7 @@ const addressForm = ref({
 })
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+// ::deep(.el-input__wrapper) {
+//   box-shadow: 0 0 0 1px $fs-base-color-dark inset !important;
+// }</style>

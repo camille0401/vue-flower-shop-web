@@ -114,6 +114,8 @@ const checkInfo = ref({}); // 订单对象
 .fs-settlement-page {
   margin-top: 20px;
 
+
+
   // ::v-deep(.el-form-item__label) {
   //   color: #333 !important;
   // }
@@ -215,7 +217,7 @@ const checkInfo = ref({}); // 订单对象
 
       &.active,
       &:hover {
-        border-color: $fs-base-color-light;
+        border-color: $fs-base-color-dark;
       }
     }
 

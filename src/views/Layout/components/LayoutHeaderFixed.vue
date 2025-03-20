@@ -4,7 +4,7 @@
       <FSLogo />
       <!-- 导航区域 -->
       <div class="right-box">
-        <LayoutHeaderUI />
+        <FSCategoryNav position="fixed" />
       </div>
     </div>
   </div>
@@ -12,7 +12,7 @@
 
 <script setup name="LayoutHeaderFixed">
 import FSLogo from "@/components/FSLogo.vue";
-import LayoutHeaderUI from './LayoutHeaderUI.vue';
+import FSCategoryNav from "@/components/FSCategoryNav.vue";
 import { useScroll } from '@vueuse/core';
 
 const { y } = useScroll(window);
@@ -26,7 +26,7 @@ const { y } = useScroll(window);
   z-index: 999;
   width: 100%;
   height: 100px;
-  background-color: $fs-base-color-light;
+  background-color: #FFF;
   // border-bottom: 1px solid #e4e4e4;
   box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .1);
   // 此处为关键样式!!!
@@ -49,20 +49,8 @@ const { y } = useScroll(window);
       display: flex;
       align-items: center;
       width: calc(100% - 250px);
-      padding-left: 40px;
-
-      a {
-        &:hover {
-          color: $fs-base-color-dark;
-          border-bottom: 1px solid $fs-base-color-dark;
-        }
-      }
-
-      .active {
-        color: $fs-base-color-dark;
-        border-bottom: 1px solid $fs-base-color-dark;
-      }
     }
+
   }
 
 }

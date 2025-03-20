@@ -33,12 +33,10 @@ onMounted(() => getNew())
   display: grid;
   grid-template-columns: repeat(4, calc((100% - 30px)/4));
   gap: 10px;
-  height: 426px;
 
-  li {
-    width: 100%;
+  a {
+    display: block;
     height: 406px;
-
     background: #f0f9f4;
     transition: all .5s;
 
@@ -53,8 +51,8 @@ onMounted(() => getNew())
     }
 
     p {
-      font-size: 2.2rem;
-      padding-top: 12px;
+      font-size: 18px;
+      padding: 12px 12px 0;
       text-align: center;
       text-overflow: ellipsis;
       overflow: hidden;
@@ -65,5 +63,6 @@ onMounted(() => getNew())
       color: $priceColor;
     }
   }
+
 }
 </style>

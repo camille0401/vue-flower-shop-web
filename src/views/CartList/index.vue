@@ -65,7 +65,7 @@
         </table>
       </div>
       <!-- 操作栏 -->
-      <div class="action">
+      <div class="action" v-if="cartStore.cartList.length !== 0">
         <div class="batch">
           共 {{ cartStore.cartAllCount }} 件商品，已选择 {{ cartStore.cartSelectedCount }} 件，商品合计：
           <span class="red">¥ {{ cartStore.cartSelectedPrice }} </span>
