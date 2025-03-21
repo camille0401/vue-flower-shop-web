@@ -28,7 +28,7 @@ export const useCartStore = defineStore(
     );
     // 3.是否全选
     const cartIsAll = computed(() =>
-      cartList.value.every((item) => item.selected)
+      cartList.value.every((item) => item.selected) ? true : false
     );
 
     // 4. 已选择数量

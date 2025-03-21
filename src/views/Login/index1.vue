@@ -185,12 +185,12 @@ const showLogin = () => {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 100px;
+  height: 10rem;
 
   .header-right-box {
     display: flex;
     align-items: center;
-    column-gap: 20px;
+    column-gap: 2rem;
     font-size: 1.6rem;
 
     i {
@@ -206,7 +206,7 @@ const showLogin = () => {
 
       i {
         font-size: 2.2rem;
-        margin-right: 15px;
+        margin-right: 1.5rem;
       }
     }
   }
@@ -216,23 +216,25 @@ const showLogin = () => {
 .login-section {
   /* 相对定位 */
   position: relative;
-  height: 500px;
+  height: 60rem;
   background-color: #fff;
   border-radius: 5px;
   /* 阴影 */
   box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
   margin: auto;
-  transform: translateY(50%);
+  transform: translateY(45%);
 
 
   .form-box {
     /* 绝对定位 */
     position: absolute;
-    top: -10%;
+    top: -8%;
     left: 5%;
-    background-color: #d3b7d8;
+    // background-color: #d3b7d8;
+    background-color: $fs-base-color-light;
+
     width: 50%;
-    height: 610px;
+    height: 70rem;
     border-radius: 5px;
     box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
     display: flex;
@@ -258,7 +260,7 @@ const showLogin = () => {
 
   h1 {
     text-align: center;
-    margin-bottom: 25px;
+    margin-bottom: 2.5rem;
     /* 大写 */
     text-transform: uppercase;
     color: #fff;
@@ -291,8 +293,8 @@ const showLogin = () => {
     border: none;
     /* 下边框样式 */
     border-bottom: 1px solid rgba(255, 255, 255, 0.4);
-    padding: 10px 0;
-    text-indent: 10px;
+    padding: 1rem 0;
+    text-indent: 1rem;
     margin: 8px 0;
     font-size: 14px;
     letter-spacing: 2px;
@@ -319,11 +321,11 @@ const showLogin = () => {
 
   .form-box button {
     width: 80%;
-    margin-top: 35px;
+    margin-top: 3.5rem;
     background-color: #f6f6f6;
     outline: none;
     border-radius: 8px;
-    padding: 13px;
+    padding: 1.5rem;
     color: #a262ad;
     letter-spacing: 2px;
     border: none;
@@ -378,10 +380,10 @@ const showLogin = () => {
   }
 
   .con-box img {
-    width: 150px;
-    height: 150px;
+    width: 15rem;
+    height: 15rem;
     opacity: 0.9;
-    margin: 40px 0;
+    margin: 4rem 0;
   }
 
   .con-box button {

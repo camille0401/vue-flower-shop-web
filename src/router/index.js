@@ -13,6 +13,11 @@ const router = createRouter({
           component: () => import("@/views/Home/index.vue"),
         },
         {
+          path: "allCategories", //测试
+          name: "allCategories",
+          component: () => import("@/views/AllCategories/index.vue"),
+        },
+        {
           path: "category/:id",
           name: "category",
           component: () => import("@/views/Category/index.vue"),
@@ -44,7 +49,7 @@ const router = createRouter({
         },
         {
           path: "settlement1",
-          name: "settlement1",
+          name: "settlement1", ////测试
           component: () => import("@/views/Settlement/index1.vue"),
         },
         {
@@ -56,6 +61,27 @@ const router = createRouter({
           path: "pay/result",
           name: "payResult",
           component: () => import("@/views/Pay/PayResult.vue"),
+        },
+        {
+          path: "member",
+          name: "member",
+          component: () => import("@/views/Member/index.vue"),
+          children: [
+            {
+              path: "",
+              component: () => import("@/views/Member/UserHome/index.vue"),
+            },
+            {
+              path: "info",
+              name: "member-userinfo",
+              component: () => import("@/views/Member/UserInfo/index.vue"),
+            },
+            {
+              path: "order",
+              name: "member-userorder",
+              component: () => import("@/views/Member/UserOrder/index.vue"),
+            },
+          ],
         },
       ],
     },

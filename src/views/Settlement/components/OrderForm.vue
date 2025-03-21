@@ -18,4 +18,16 @@ const orderFormRef = ref({
 })
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+:deep(.el-input__wrapper) {
+  background-color: #F7F9FA;
+  box-shadow: none;
+  color: #232628;
+}
+
+:deep(.el-select__wrapper) {
+  background-color: #F7F9FA;
+  box-shadow: none;
+  color: #232628;
+}
+</style>

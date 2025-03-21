@@ -2,9 +2,9 @@
   <nav class="app-topnav">
     <div class="container">
       <ul>
-        <li>
+        <!-- <li>
           <RouterLink to="/"><i class="iconfont icon-home"></i></RouterLink>
-        </li>
+        </li> -->
         <template v-if="userStore?.userInfo?.token">
           <li><a href="javascript:;"><i class="iconfont icon-user"></i>{{ userStore?.userInfo?.account }}</a></li>
           <li>
@@ -14,8 +14,12 @@
               </template>
             </el-popconfirm>
           </li>
-          <li><a href="javascript:;">我的订单</a></li>
-          <li><a href="javascript:;">会员中心</a></li>
+          <li>
+            <RouterLink to="/member/order">我的订单</RouterLink>
+          </li>
+          <li>
+            <RouterLink to="/member">会员中心</RouterLink>
+          </li>
         </template>
         <template v-else>
           <li>

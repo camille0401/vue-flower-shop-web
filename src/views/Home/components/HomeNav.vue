@@ -1,9 +1,9 @@
 <template>
   <div class="fs-home-nav">
     <div class="container category-box">
-      <h2 class="left-box">
+      <RouterLink to="/allCategories" class="left-box">
         <span>所有分类</span>
-      </h2>
+      </RouterLink>
       <div class="right-box">
         <FSCategoryNav />
       </div>

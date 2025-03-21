@@ -1,22 +1,7 @@
 <template>
   <div class="fs-category-page">
     <!-- nav -->
-    <div class="category-nav-box">
-      <div class="container">
-        <h2 class="left-box">
-          <span>所有分类</span>
-        </h2>
-        <ul class="right-box">
-          <!-- <FSCategoryNav position="category" /> -->
-          <li>
-            <RouterLink to="/">首页</RouterLink>
-          </li>
-          <li v-for="category in categoryStore.categoryList" :key="category.id">
-            <RouterLink active-class="active" :to="`/category/${category.id}`">{{ category.name }}</RouterLink>
-          </li>
-        </ul>
-      </div>
-    </div>
+    <FSFullCategoryNav />
 
     <!-- content -->
     <div class="container content m-top-20">
@@ -101,7 +86,7 @@
 </template>
 
 <script setup>
-import FSCategoryNav from '@/components/FSCategoryNav.vue';
+import FSFullCategoryNav from "@/components/FSFullCategoryNav.vue";
 import FSGoodsItem from "@/components/FSGoodsItem.vue";
 import { getCategoryFilterAPI, getSubCategoryAPI } from "@/apis/category"
 import { onMounted, ref } from "vue"
@@ -165,62 +150,6 @@ const load = async () => {
   $c-yellow: #f1c323;
   $c-purple: #d37bfc;
   $c-blue: #5b37f7;
-
-  // category
-  .category-nav-box {
-    width: 100%;
-    background: $fs-base-color-dark;
-
-    .container {
-      display: flex;
-
-      .left-box {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 250px;
-        background: #cd1076;
-        font-size: 18px;
-        line-height: 52px;
-        font-weight: bold;
-        text-align: center;
-        color: #fff;
-      }
-
-      .right-box {
-        width: calc(100% - 250px);
-        height: 100%;
-        display: flex;
-        align-items: center;
-        flex-wrap: wrap;
-        color: #ffffff;
-        z-index: 998;
-        flex-shrink: 0;
-        padding-left: 20px;
-
-        $--active-color: #cd1076;
-
-        a {
-          display: inline-block;
-          font-size: 1.6rem;
-          line-height: 32px;
-          color: inherit;
-          padding: 10px 15px;
-
-          &:hover {
-            color: #ffffff;
-            background-color: $--active-color;
-          }
-        }
-
-        .active {
-          color: #ffffff;
-          background-color: $--active-color;
-        }
-      }
-
-    }
-  }
 
   .content {
     background: $c-white;

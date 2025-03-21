@@ -156,3 +156,9 @@ ul {
   font-weight: 400 !important;
 }
 
+:deep(.el-input__wrapper) {
+  background-color: #F7F9FA;
+  border: 1px solid $fs-base-color-dark !important;
+  box-shadow: none;
+  color: #232628;
+}
