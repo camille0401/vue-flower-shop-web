@@ -12,6 +12,7 @@
   "dependencies": {
     "@vueuse/core": "^12.7.0",
     "axios": "^1.7.9",
+    "big.js": "^6.2.2",
     "dayjs": "^1.11.13",
     "element-plus": "^2.9.4",
     "pinia": "^3.0.1",

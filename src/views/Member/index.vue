@@ -22,7 +22,7 @@
                 class="iconfont icon-meiguihua"></i></h4>
             <ul class="nav-list">
               <li class="item-nav">
-                <RouterLink class="nav-subtitle" to="/member" active-class="active"><i
+                <RouterLink class="nav-subtitle" to="/member/home" active-class="active"><i
                     class="iconfont icon-huiyuan"></i><span>首页</span></RouterLink>
               </li>
               <li class="item-nav">
@@ -53,6 +53,9 @@
         </el-col>
         <el-col :span="18">
           <div class="content">
+            <!-- 进度条 -->
+            <!-- <FSProgress /> -->
+
             <RouterView />
           </div>
         </el-col>
@@ -64,6 +67,8 @@
 
 <script setup>
 import FSFullCategoryNav from '@/components/FSFullCategoryNav.vue';
+import FSProgress from '@/components/FSProgress.vue';
+
 </script>
 
 <style lang="scss" scoped>
@@ -145,8 +150,6 @@ import FSFullCategoryNav from '@/components/FSFullCategoryNav.vue';
 
     .content {
       width: 100%;
-      border-radius: 12px;
-      background: #fff;
     }
 
   }

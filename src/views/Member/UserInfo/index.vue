@@ -64,6 +64,8 @@ const userInfoForm = ref({
 <style scoped lang="scss">
 .fs-member-userinfo-container {
   padding: 20px;
+  background: #fff;
+  border-radius: 12px;
 
   .big-title {
     font-size: 20px;

@@ -2,11 +2,13 @@
   <nav class="app-topnav">
     <div class="container">
       <ul>
-        <!-- <li>
-          <RouterLink to="/"><i class="iconfont icon-home"></i></RouterLink>
-        </li> -->
         <template v-if="userStore?.userInfo?.token">
-          <li><a href="javascript:;"><i class="iconfont icon-user"></i>{{ userStore?.userInfo?.account }}</a></li>
+          <li>
+            <RouterLink to="/member/info">
+              <i class="iconfont icon-user"></i>
+              {{ userStore?.userInfo?.account }}
+            </RouterLink>
+          </li>
           <li>
             <el-popconfirm @confirm="confirmLogout" title="确认退出吗?" confirm-button-text="确认" cancel-button-text="取消">
               <template #reference>
@@ -18,7 +20,7 @@
             <RouterLink to="/member/order">我的订单</RouterLink>
           </li>
           <li>
-            <RouterLink to="/member">会员中心</RouterLink>
+            <RouterLink to="/member/home">会员中心</RouterLink>
           </li>
         </template>
         <template v-else>

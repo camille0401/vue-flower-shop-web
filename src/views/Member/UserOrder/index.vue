@@ -147,6 +147,8 @@ const fomartPayState = (payState) => {
 <style scoped lang="scss">
 .fs-member-userorder-container {
   padding: 10px 20px;
+  background: #fff;
+  border-radius: 12px;
 
   .pagination-container {
     display: flex;

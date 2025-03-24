@@ -68,13 +68,18 @@ const router = createRouter({
           component: () => import("@/views/Member/index.vue"),
           children: [
             {
-              path: "",
+              path: "home",
               component: () => import("@/views/Member/UserHome/index.vue"),
             },
             {
               path: "info",
               name: "member-userinfo",
               component: () => import("@/views/Member/UserInfo/index.vue"),
+            },
+            {
+              path: "address",
+              name: "member-useraddress",
+              component: () => import("@/views/Member/UserAddress/index.vue"),
             },
             {
               path: "order",
