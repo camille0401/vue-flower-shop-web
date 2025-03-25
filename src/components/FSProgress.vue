@@ -7,14 +7,9 @@
 </template>
 
 <script setup>
-import { onMounted, onUnmounted, ref, watch } from 'vue';
+import { onMounted, onUnmounted, ref, watch } from 'vue'
 import Big from 'big.js'
 
-const percentage = ref(100);
-const initStep = 5;
-const frequency = 1000;
-let step = initStep;
-let timer = null;
 const range = {
   0: 6,
   10: 5,
@@ -27,6 +22,11 @@ const range = {
   80: 0.05,
   90: 0.01,
 };
+const percentage = ref(100);
+const initStep = 5;
+const frequency = 1000;
+let step = initStep;
+let timer = null;
 
 const percentHandle = () => {
   timer = setInterval(() => {
@@ -44,9 +44,6 @@ const percentHandle = () => {
       if (percentage.value >= 98) {
         step = 0.0001;
       }
-      // console.log(percentage.value)
-      // console.log((parseInt((percentage.value / 10).toString()) * 10).toString())
-      // console.log("step+===========", step)
       percentage.value = Big(percentage.value).plus(Big(step));
       step = range[(parseInt((percentage.value / 10).toString()) * 10).toString()];
     }

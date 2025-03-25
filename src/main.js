@@ -3,8 +3,8 @@ import { createPinia } from "pinia";
 import piniaPluginPersistedstate from "pinia-plugin-persistedstate";
 import App from "./App.vue";
 import router from "./router";
-import "./styles/common.scss";
 import { lazyImgPlugin } from "@/directives";
+import "./styles/common.scss";
 
 const app = createApp(App);
 

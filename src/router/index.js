@@ -1,4 +1,11 @@
 import { createRouter, createWebHistory } from "vue-router";
+import NProgress from "nprogress";
+import "nprogress/nprogress.css";
+
+//全局进度条的配置
+NProgress.configure({
+  showSpinner: false,
+});
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -93,7 +100,7 @@ const router = createRouter({
     {
       path: "/login",
       name: "login",
-      component: () => import("@/views/Login/index1.vue"),
+      component: () => import("@/views/Login/index2.vue"),
     },
   ],
   // 路由滚动行为定制
@@ -102,6 +109,16 @@ const router = createRouter({
       top: 0,
     };
   },
+});
+
+// 页面渲染成功之后，展示进度条（实际效果：Mac的Chrome就是在页面顶部有条2px左右的进度条）
+router.beforeEach(async (to, from) => {
+  NProgress.start();
+});
+
+// 页面加载成功之后，关闭进度条
+router.afterEach((to) => {
+  NProgress.done();
 });
 
 export default router;

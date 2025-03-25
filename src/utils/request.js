@@ -4,6 +4,11 @@ import { ElMessage } from "element-plus";
 import { useUserStore } from "@/stores/user";
 import router from "@/router";
 
+const baseURL =
+  import.meta.env.NODE_ENV === "production"
+    ? import.meta.env.VITE_APP_PROXY_TARGET
+    : import.meta.env.VITE_APP_PROXY_TARGET + import.meta.env.VITE_APP_BASE_API;
+
 // 创建axios实例
 const request = axios.create({
   baseURL: "http://pcapi-xiaotuxian-front-devtest.itheima.net",
