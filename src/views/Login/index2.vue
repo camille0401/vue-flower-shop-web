@@ -12,54 +12,50 @@
             <el-input class="in-1" v-model="loginForm.account" size="large" placeholder="Your email"
               :suffix-icon="UserFilled" />
           </el-form-item>
-          <el-form-item prop="account">
+          <el-form-item prop="password">
             <el-input class="in-2" v-model="loginForm.password" size="large" placeholder="Your password"
               :suffix-icon="Lock" />
           </el-form-item>
           <el-form-item class="rem">
             <p>
               <el-checkbox size="large">
-                Remenber me
+                记住我
               </el-checkbox>
             </p>
-            <a>Forgot password?</a>
+            <a>忘记密码?</a>
           </el-form-item>
           <el-form-item>
-            <el-button type="plain" size="large" @click="doLogin">Login</el-button>
+            <el-button type="plain" size="large" @click="doLogin">登录</el-button>
           </el-form-item>
         </el-form>
         <p class="reg">
-          Don't have an account?
-          <a href="javascript:void(0);" @click="showRegister">Register</a>
+          还没有账号?
+          <a href="javascript:void(0);" @click="showRegister">去注册</a>
         </p>
       </section>
       <!-- 注册 -->
       <section class="login-section register" v-show="!isLogin">
         <h1>WELCOME</h1>
-        <el-form style="width: 90%;" ref="loginFormRef" :model="loginForm" :rules="loginRules">
+        <el-form style="width: 90%;" ref="registerFormRef" :model="registerForm" :rules="registerRules">
           <el-form-item prop="account">
-            <el-input class="in-1" v-model="loginForm.account" size="large" placeholder="Your email"
+            <el-input class="in-1" v-model="registerForm.account" size="large" placeholder="Your email"
               :suffix-icon="UserFilled" />
           </el-form-item>
-          <el-form-item prop="account">
-            <el-input class="in-2" v-model="loginForm.password" size="large" placeholder="Your password"
+          <el-form-item prop="password">
+            <el-input class="in-2" v-model="registerForm.password" size="large" placeholder="Your password"
               :suffix-icon="Lock" />
           </el-form-item>
-          <el-form-item class="rem">
-            <p>
-              <el-checkbox size="large">
-                Remenber me
-              </el-checkbox>
-            </p>
-            <a>Forgot password?</a>
+          <el-form-item prop="checkPassword">
+            <el-input class="in-3" v-model="registerForm.checkPassword" size="large" placeholder="Confirm password"
+              :suffix-icon="Lock" />
           </el-form-item>
           <el-form-item>
-            <el-button type="plain" size="large">Login</el-button>
+            <el-button type="plain" size="large">注册</el-button>
           </el-form-item>
         </el-form>
         <p class="reg">
-          Don't have an account?
-          <a href="javascript:void(0);" @click="showLogin">Login</a>
+          已有账号?
+          <a href="javascript:void(0);" @click="showLogin">去登录</a>
         </p>
       </section>
     </div>
@@ -78,11 +74,12 @@ import { UserFilled, Lock } from '@element-plus/icons-vue'
 
 const userStore = useUserStore();
 const router = useRouter();
+
+// 登录
 const loginFormRef = ref(null);
 const loginForm = ref({
   account: "",
-  password: "",
-  agree: ""
+  password: ""
 })
 const loginRules = reactive({
   account: [
@@ -129,6 +126,37 @@ const doLogin = () => {
   })
 }
 
+// 注册
+const registerFormRef = ref(null)
+const registerForm = ref({
+  account: "",
+  password: "",
+  checkPassword: ""
+})
+const registerRules = reactive({
+  account: [
+    { required: false, message: '邮箱不能为空', trigger: 'blur' }
+  ],
+  password: [
+    { required: false, message: '密码不能为空', trigger: 'blur' },
+    { min: 6, max: 14, message: '密码长度为6-14个字符', trigger: 'blur' },
+  ],
+  checkPassword: [
+    {
+      validator: (rule, value, callback) => {
+        if (value === '') {
+          callback(new Error('请再次输入密码'))
+        } else if (value !== registerForm.value.password) {
+          callback(new Error('两次输入密码不一致!'))
+        } else {
+          callback()
+        }
+      }
+    }
+  ]
+})
+
+
 // login-register-animation
 const isLogin = ref(true)
 // go-register-btn
@@ -139,7 +167,7 @@ const showRegister = () => {
 // go-login-btn
 const showLogin = () => {
   isLogin.value = true;
-  loginFormRef.value.resetFields()
+  registerFormRef.value.resetFields()
 }
 
 </script>
@@ -164,6 +192,13 @@ const showLogin = () => {
   right: 0;
   background-color: rgba(0, 0, 0, 0.2);
   z-index: 0;
+}
+
+.login-header {
+  p {
+    font-size: 1.4em;
+    color: #FFF;
+  }
 }
 
 .login-content {
@@ -274,6 +309,12 @@ const showLogin = () => {
     opacity: 0;
   }
 
+  .in-3 {
+    animation: reloadA 1.8s ease-in-out forwards;
+    animation-delay: 0.8s;
+    opacity: 0;
+  }
+
   .rem {
     display: flex;
     justify-content: space-between;
@@ -307,6 +348,7 @@ const showLogin = () => {
     animation: reloadA 2s ease-in-out forwards;
     animation-delay: 1s;
     opacity: 0;
+    cursor: default;
   }
 
   button:hover {
@@ -330,7 +372,6 @@ const showLogin = () => {
   :deep(.el-checkbox) {
     color: #FFF;
   }
-
 
 }
 

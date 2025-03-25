@@ -102,6 +102,11 @@ const router = createRouter({
       name: "login",
       component: () => import("@/views/Login/index2.vue"),
     },
+    {
+      path: "/login1",
+      name: "login1",
+      component: () => import("@/views/Login/index1.vue"),
+    },
   ],
   // 路由滚动行为定制
   scrollBehavior() {
