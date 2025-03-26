@@ -98,14 +98,20 @@ const router = createRouter({
       ],
     },
     {
-      path: "/login",
-      name: "login",
+      path: "/login2",
+      name: "login2",
       component: () => import("@/views/Login/index2.vue"),
     },
     {
-      path: "/login1",
-      name: "login1",
-      component: () => import("@/views/Login/index1.vue"),
+      path: "/login",
+      name: "login",
+      component: () => import("@/views/Login/index.vue"),
+    },
+    {
+      path: "/:pathMatch(.*)",
+      name: "NotFound",
+      redirect: { name: "home" },
+      // component: () => import("@/views/NotFound/index.vue"),
     },
   ],
   // 路由滚动行为定制
