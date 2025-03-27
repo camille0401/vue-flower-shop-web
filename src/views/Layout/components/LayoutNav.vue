@@ -30,7 +30,7 @@
           <li><a href="javascript:;">帮助中心</a></li>
           <li><a href="javascript:;">关于我们</a></li>
         </template>
-        <li><a href="javascript:;"><i class="iconfont icon-service"></i>&nbsp;4009-939-002</a></li>
+        <li><a href="javascript:;"><i class="iconfont icon-icon-test1"></i>&nbsp;4009-939-002</a></li>
       </ul>
     </div>
   </nav>

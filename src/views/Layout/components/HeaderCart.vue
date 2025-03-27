@@ -1,7 +1,7 @@
 <template>
   <div class="cart">
     <a class="curr" href="javascript:;" @click="toCartListPage">
-      <i class="iconfont icon-cart"></i><em>{{ cartListLength }}</em>
+      <i class="iconfont icon-caigou"></i><em>{{ cartListLength }}</em>
     </a>
     <div class="layer" v-if="cartListLength > 0">
       <div class="list">
@@ -65,8 +65,8 @@ const toCartListPage = () => {
     position: relative;
     display: block;
 
-    .icon-cart {
-      font-size: 2.2rem;
+    .icon-caigou {
+      font-size: 3rem;
     }
 
     em {

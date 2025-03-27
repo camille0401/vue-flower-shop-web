@@ -18,16 +18,19 @@
       <el-row :gutter="20">
         <el-col :span="6">
           <div class="aside">
-            <h4 class="title m-bottom-20"><i class="iconfont icon-meiguihua"></i>会员中心<i
-                class="iconfont icon-meiguihua"></i></h4>
+            <h4 class="title m-bottom-20">
+              <i class="iconfont icon-meiguihua"></i>
+              会员中心
+              <i class="iconfont icon-meiguihua"></i>
+            </h4>
             <ul class="nav-list">
               <li class="item-nav">
                 <RouterLink class="nav-subtitle" to="/member/home" active-class="active"><i
-                    class="iconfont icon-huiyuan"></i><span>首页</span></RouterLink>
+                    class="iconfont icon-huiyuan1"></i><span>首页</span></RouterLink>
               </li>
               <li class="item-nav">
                 <div class="nav-subtitle">
-                  <i class="iconfont icon-gerenzhongxin"></i><span>个人中心</span>
+                  <i class="iconfont icon-yonghu"></i><span>个人中心</span>
                 </div>
                 <ul>
                   <li class="sub-menu-title">
@@ -40,7 +43,7 @@
               </li>
               <li class="item-nav">
                 <div class="nav-subtitle">
-                  <i class="iconfont icon-dingdan"></i><span>订单中心</span>
+                  <i class="iconfont icon-icon-test"></i><span>订单中心</span>
                 </div>
                 <ul>
                   <li class="sub-menu-title">
@@ -97,6 +100,10 @@ import FSProgress from '@/components/FSProgress.vue';
         font-weight: 400;
         color: #232628;
         margin-bottom: 20px;
+
+        i {
+          font-size: 18px;
+        }
       }
 
       .nav-list {

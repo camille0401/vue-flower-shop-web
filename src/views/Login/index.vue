@@ -150,7 +150,7 @@ C318.115,0,375.068,22.126,419.404,58.936z"></path>
                 <el-button class="button-submit" type="plain" size="large">注册</el-button>
               </el-form-item>
             </el-form>
-            <p class="p">Use your email for registration<span class="span" @click="showLogin">Sign In</span> </p>
+            <p class="p">Already have an acount <span class="span" @click="showLogin">Sign In</span> </p>
             <p class="p line">Or With</p>
             <div class="flex-row">
               <button class="btn google">

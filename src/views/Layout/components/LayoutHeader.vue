@@ -35,7 +35,7 @@ import HeaderCart from "./HeaderCart.vue";
     align-items: center;
     column-gap: 10px;
     width: calc(100% - 340px);
-    padding: 0 20px;
+    padding: 5px 20px;
     line-height: 48px;
     border: 1px solid $fs-base-color-dark;
     border-radius: var(--el-border-radius-base);
